@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Greatest 64 eFootball League</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <script>
+    async function joinLeague(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      if (!username || !phone) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const list = document.getElementById("players-list");
+      const newItem = document.createElement("li");
+      newItem.textContent = username;
+      newItem.className = "animate__animated animate__fadeInRight";
+      list.prepend(newItem);
+
+      window.open("https://chat.whatsapp.com/JWtMOW3vHj1LIbRX9IW1gU", "_blank");
+
+      setTimeout(() => {
+        alert("🎉 Congratulations! You have successfully joined the Greatest 64 eFootball group. Make your application early to secure your spot!");
+      }, 1000);
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-tr from-purple-900 via-blue-950 to-gray-900 text-white font-sans px-4 py-10">
+  <div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-2xl shadow-2xl border-2 border-yellow-500 animate__animated animate__fadeInDown">
+    <h1 class="text-5xl font-extrabold mb-4 text-center text-yellow-400 animate__animated animate__zoomIn">Greatest 64 League</h1>
+    <p class="text-lg text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">⚽ Join the ultimate eFootball knockout battle! 64 teams. 1 Champion. Glory Awaits!</p>
+    <p class="text-md text-center text-pink-300 mb-4 animate__animated animate__fadeInRight">🎯 <strong>Registration is completely FREE!</strong> Don’t wait — secure your place before it’s full!</p>
+
+    <form onsubmit="joinLeague(event)" class="space-y-4 bg-gray-700 p-4 rounded-xl shadow-md animate__animated animate__fadeInUp">
+      <div>
+        <label class="block text-sm font-medium text-yellow-200">EFootball Username</label>
+        <input id="username" type="text" class="w-full p-2 rounded bg-gray-900 text-white" placeholder="e.g., Trumperbee" required />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-yellow-200">WhatsApp Phone Number</label>
+        <input id="phone" type="tel" class="w-full p-2 rounded bg-gray-900 text-white" placeholder="e.g., +254712345678" required />
+      </div>
+      <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-4 rounded-xl text-gray-900 transition transform hover:scale-105 animate__animated animate__bounceIn">Join the League</button>
+    </form>
+
+    <!-- Live Player List -->
+    <div class="mt-8 bg-gray-900 p-4 rounded-xl border-t-4 border-green-400 animate__animated animate__fadeIn">
+      <h2 class="text-xl font-bold mb-2 text-green-300">Live Players Joining:</h2>
+      <ul id="players-list" class="space-y-1 text-white text-sm max-h-40 overflow-y-auto">
+        <li>Victor (Trumperbee)</li>
+        <li>JamesFIFA</li>
+        <li>KenThePro</li>
+        <li>GoalMaster254</li>
+        <!-- New entries will appear above -->
+      </ul>
+    </div>
+
+    <div class="mt-8 text-sm bg-gray-900 p-4 rounded-xl border-t-4 border-yellow-300 animate__animated animate__fadeInUp">
+      <h2 class="text-2xl font-bold mb-2 text-yellow-300">Match Rules & Structure:</h2>
+      <ul class="list-disc pl-5 space-y-2 text-white">
+        <li>Knockout format (2-legged games) until the Last 16</li>
+        <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
+        <li>Match Time: 12 minutes per game</li>
+        <li>No extra time or penalties in 2-leg matches</li>
+        <li><strong>3rd Match Rule:</strong> If aggregate is a draw, play a 6-min match with ET + Pens</li>
+        <li>Match Conditions: Always set to Excellent (Home & Away)</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold mt-4 text-yellow-300">Prizes to be Won:</h3>
+      <ul class="list-disc pl-5 space-y-1 text-white animate__animated animate__pulse">
+        <li>🥇 1st Place: Ksh 1000</li>
+        <li>🥈 2nd Place: Ksh 500</li>
+        <li>🥉 3rd Place: Ksh 200</li>
+        <li>🛡️ Best Defence: Ksh 50 (Least goals conceded)</li>
+        <li>⚔️ Best Attack: Ksh 50 (Most goals scored)</li>
+      </ul>
+
+      <div class="mt-6 p-3 bg-blue-950 rounded-xl text-blue-200 text-sm border border-blue-600">
+        <strong>Note:</strong> After joining the WhatsApp group, send your username to the admin to confirm your slot.
+      </div>
+    </div>
+
+    <div class="text-center mt-10 text-sm text-gray-400 animate__animated animate__fadeIn">
+      <p>Developed by <strong class="text-yellow-400">Victor (Trumperbee)</strong></p>
+      <p>Contact me via <a href="https://wa.me/254790231190" class="text-green-400 underline">WhatsApp</a></p>
+      <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>
+    </div>
+  </div>
+</body>
+</html>
