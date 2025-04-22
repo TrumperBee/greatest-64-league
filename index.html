@@ -2,10 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Greatest 64 eFootball League</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f0f0f0;
+      min-height: 100vh;
+    }
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .player-item {
+      background: rgba(255 255 255 / 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      color: #ffd43b;
+      box-shadow: 0 2px 6px rgb(255 212 59 / 0.4);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .player-item:hover {
+      background: rgba(255 255 255 / 0.25);
+      color: #fff;
+      cursor: default;
+    }
+    .section-container {
+      background: rgba(0 0 0 / 0.5);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.7);
+    }
+    h1, h2, h3 {
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    button {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
   <script>
     async function joinLeague(event) {
       event.preventDefault();
@@ -31,69 +77,70 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-tr from-purple-900 via-blue-950 to-gray-900 text-white font-sans px-4 py-10">
-  <div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-2xl shadow-2xl border-2 border-yellow-500 animate__animated animate__fadeInDown">
-    <h1 class="text-5xl font-extrabold mb-4 text-center text-yellow-400 animate__animated animate__zoomIn">Greatest 64 League</h1>
-    <p class="text-lg text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">⚽ Join the ultimate eFootball knockout battle! 64 teams. 1 Champion. Glory Awaits!</p>
-    <p class="text-md text-center text-pink-300 mb-4 animate__animated animate__fadeInRight">🎯 <strong>Registration is completely FREE!</strong> Don’t wait — secure your place before it’s full!</p>
+<body class="px-6 py-12">
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInDown">
+    <h1 class="text-6xl font-extrabold mb-6 text-yellow-400 text-center animate__animated animate__zoomIn">Greatest 64 League</h1>
+    <p class="text-xl text-center text-green-400 font-semibold mb-3 animate__animated animate__fadeInLeft">⚽ Join the ultimate eFootball knockout battle! 64 teams. 1 Champion. Glory Awaits!</p>
+    <p class="text-lg text-center text-pink-300 mb-8 animate__animated animate__fadeInRight">🎯 <strong>Registration is completely FREE!</strong> Don’t wait — secure your place before it’s full!</p>
 
-    <form onsubmit="joinLeague(event)" class="space-y-4 bg-gray-700 p-4 rounded-xl shadow-md animate__animated animate__fadeInUp">
+    <form onsubmit="joinLeague(event)" class="space-y-6 bg-gray-900 bg-opacity-70 p-6 rounded-2xl shadow-lg animate__animated animate__fadeInUp">
       <div>
-        <label class="block text-sm font-medium text-yellow-200">EFootball Username</label>
-        <input id="username" type="text" class="w-full p-2 rounded bg-gray-900 text-white" placeholder="e.g., Trumperbee" required />
+        <label class="block text-sm font-medium text-yellow-300 mb-1">EFootball Username</label>
+        <input id="username" type="text" class="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-yellow-300 focus:outline-yellow-400" placeholder="e.g., Trumperbee" required />
       </div>
       <div>
-        <label class="block text-sm font-medium text-yellow-200">WhatsApp Phone Number</label>
-        <input id="phone" type="tel" class="w-full p-2 rounded bg-gray-900 text-white" placeholder="e.g., +254712345678" required />
+        <label class="block text-sm font-medium text-yellow-300 mb-1">WhatsApp Phone Number</label>
+        <input id="phone" type="tel" class="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-yellow-300 focus:outline-yellow-400" placeholder="e.g., +254712345678" required />
       </div>
-      <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 font-bold py-2 px-4 rounded-xl text-gray-900 transition transform hover:scale-105 animate__animated animate__bounceIn">Join the League</button>
+      <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 font-bold py-3 rounded-xl text-gray-900 transition transform hover:scale-105 animate__animated animate__bounceIn">Join the League</button>
     </form>
+  </div>
 
-    <!-- Registered Players Count and List -->
-    <div class="mt-8 bg-gray-900 p-4 rounded-xl border-t-4 border-blue-500 animate__animated animate__fadeIn">
-      <h2 class="text-xl font-bold mb-2 text-blue-400">Registered Players (29):</h2>
-      <ul class="list-disc pl-5 space-y-1 text-white max-h-48 overflow-y-auto">
-        <li>Trumperbee</li>
-        <li>Raydelo</li>
-        <li>Felixmorara</li>
-        <li>Aniro</li>
-        <li>Magggggs</li>
-        <li>Mufasa</li>
-        <li>Drunken Master</li>
-        <li>Dukeh</li>
-        <li>Blitzfury</li>
-        <li>Boogie</li>
-        <li>Abishai</li>
-        <li>Mwai</li>
-        <li>itsotieno020</li>
-        <li>Crmax70</li>
-        <li>lanther</li>
-        <li>Young_furry</li>
-        <li>Atraz</li>
-        <li>Okwoyo</li>
-        <li>Mufasa2fly</li>
-        <li>Gitran</li>
-        <li>Griffo</li>
-        <li>Saif</li>
-        <li>Kenton</li>
-        <li>Stafyodi</li>
-        <li>Immortaljester</li>
-        <li>Faisal</li>
-        <li>Steve</li>
-        <li>Turna</li>
-        <li>Yotti</li>
-      </ul>
+  <!-- Registered Players Full List -->
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeIn">
+    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Registered Players (29)</h2>
+    <div class="players-grid" aria-label="List of registered players">
+      <div class="player-item">Mufasa2fly</div>
+      <div class="player-item">Gitran</div>
+      <div class="player-item">Magggggs</div>
+      <div class="player-item">Drunken Master</div>
+      <div class="player-item">Boogie</div>
+      <div class="player-item">Raydelo</div>
+      <div class="player-item">Felixmorara</div>
+      <div class="player-item">Aniro</div>
+      <div class="player-item">Abishai</div>
+      <div class="player-item">Mufasa</div>
+      <div class="player-item">Stafyodi</div>
+      <div class="player-item">Turna</div>
+      <div class="player-item">Yotti</div>
+      <div class="player-item">Kenton</div>
+      <div class="player-item">Griffo</div>
+      <div class="player-item">Saif</div>
+      <div class="player-item">Immortaljester</div>
+      <div class="player-item">Mwai</div>
+      <div class="player-item">itsotieno020</div>
+      <div class="player-item">Crmax70</div>
+      <div class="player-item">lanther</div>
+      <div class="player-item">Young_furry</div>
+      <div class="player-item">Atraz</div>
+      <div class="player-item">Okwoyo</div>
+      <div class="player-item">Steve</div>
+      <div class="player-item">Faisal</div>
+      <div class="player-item">Trumperbee</div>
+      <div class="player-item">Dukeh</div>
+      <div class="player-item">Blitzfury</div>
     </div>
+  </div>
 
 
-    <div class="mt-8 text-sm bg-gray-900 p-4 rounded-xl border-t-4 border-yellow-300 animate__animated animate__fadeInUp">
-      <h2 class="text-2xl font-bold mb-2 text-yellow-300">Match Rules & Structure:</h2>
-      <ul class="list-disc pl-5 space-y-2 text-white">
-        <li>Knockout format (1-legged game) until the Last 16</li>
-        <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
-        <li>Match Time: 12 minutes per game</li>
-        <li>No extra time or penalties in 2-leg matches</li>
-        <li><strong>3rd Match Rule:</strong> If aggregate is a draw, play a 6-min match with ET + Pens</li>
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <h2 class="text-2xl font-bold mb-4 text-yellow-300 text-center">Match Rules & Structure:</h2>
+    <ul class="list-disc pl-8 space-y-3 text-white text-lg max-w-3xl mx-auto">
+      <li>Knockout format (1-legged game) until the Last 16</li>
+      <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
+      <li>Match Time: 12 minutes per game</li>
+      <li>No extra time or penalties in 2-leg matches</li>
+      <li><strong>3rd Match Rule:</strong> If aggregate is a draw,play a 6-min match with ET + Pens</li>
         <li>Match Conditions: Always set to Excellent (Home & Away)</li>
       </ul>
 
