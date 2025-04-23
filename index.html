@@ -96,19 +96,9 @@
       text-align: center;
       border: 1px solid #facc15;
     }
-    .deadline-notice {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid #ef4444;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem auto;
-      max-width: 700px;
-      text-align: center;
-      font-weight: bold;
-    }
     .pot-players {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
       margin-top: 1rem;
     }
@@ -116,6 +106,41 @@
       background: rgba(255 255 255 / 0.05);
       padding: 1rem;
       border-radius: 0.5rem;
+      text-align: left;
+    }
+    .pot-column h4 {
+      margin-bottom: 0.5rem;
+    }
+    .match-result {
+      text-align: center;
+      font-weight: 700;
+      color: #34d399;
+      user-select: none;
+      align-self: center;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      color: #f0f0f0;
+      background: rgba(0,0,0,0.6);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      font-weight: 600;
+    }
+    th, td {
+      border: 1px solid #facc15;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+      font-family: 'Roboto Mono', monospace;
+    }
+    thead {
+      background-color: #b45309;
+      color: #fff;
+    }
+    tbody tr:nth-child(even) {
+      background-color: rgba(255 255 255 / 0.1);
     }
   </style>
 </head>
@@ -129,90 +154,114 @@
       🚫 Registration is now <strong>closed</strong>. The tournament is underway.
     </p>
     <p class="info-text animate__animated animate__fadeInUp">
-      This is a knockout tournament. Teams face off in one-legged matches starting from the Round of 32.
+      This tournament uses the new UCL-style format with 8 pots of 4 teams each. Teams face others in their pot in a league phase. After Matchday 3, the top 8 in the overall standings qualify directly to the Round of 16. Teams ranked 9-24 enter knockout playoffs for the remaining Round of 16 spots. Teams ranked 25-32 are eliminated.
     </p>
   </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Round of 32 Fixtures</h2>
-    <div class="fixture-grid" aria-label="Round of 32 fixtures">
-      <!-- Fixtures will be inserted here by script -->
+    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 1 Fixtures</h2>
+    <div class="fixture-grid" aria-label="Matchday 1 fixtures">
+      <!-- Fixtures inserted by script -->
     </div>
   </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
     <div class="pot-info">
       <h3 class="text-xl font-bold mb-2 text-yellow-300">Tournament Structure</h3>
-      <p class="text-white mb-4">There are two pots, each with 16 teams. The two semifinalists will come from each pot.</p>
-      
+      <p class="text-white mb-4">
+        There are 8 pots, each containing 4 teams. Teams in each pot face one another in a league phase to create a league table. After Matchday 3, the top 8 teams in the overall league standings qualify directly to the Round of 16. Teams ranked 9 to 24 enter knockout playoffs, with winners earning the remaining Round of 16 spots. Teams ranked 25 to 32 are eliminated from the tournament.
+      </p>
       <div class="pot-players">
         <div class="pot-column">
-          <h4 class="font-bold text-yellow-300 mb-2">Pot A</h4>
+          <h4 class="font-bold text-yellow-300">Pot 1</h4>
           <ol class="list-decimal pl-5 text-white">
-            <li>Trumperbee</li>
-            <li>Saif</li>
-            <li>Young_furry</li>
-            <li>lanther</li>
-            <li>Drunken Master</li>
-            <li>Steve</li>
-            <li>Yotti</li>
-            <li>Turna</li>
-            <li>Kenton</li>
+            <li>Gitran</li>
             <li>Raydelo</li>
-            <li>Stafyodi</li>
-            <li>Storm</li>
-            <li>AYUMAH</li>
-            <li>Dukeh</li>
-            <li>Homeywonder</li>
-            <li>Blitzfury</li>
+            <li>Saif</li>
+            <li>Trumperbee</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 2</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Magggs</li>
+            <li>Lanther</li>
+            <li>Griffo</li>
+            <li>Aniro</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 3</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Ziggy</li>
+            <li>Young_furry</li>
+            <li>Faisal</li>
+            <li>Drunken Master</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 4</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Mufasa2fly</li>
+            <li>Steve</li>
+            <li>Abishai</li>
+            <li>Yotti</li>
           </ol>
         </div>
         <div class="pot-column">
-          <h4 class="font-bold text-yellow-300 mb-2">Pot B</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Ziggy</li>
-            <li>Mufasa2fly</li>
-            <li>Magggggs</li>
-            <li>Faisal</li>
-            <li>Abishai</li>
-            <li>Immortaljester</li>
+          <h4</li>
+            <li>Turna</li>
             <li>Felixmorara</li>
-            <li>Gitran</li>
-            <li>Boogie</li>
-            <li>Crmax70</li>
-            <li>Atraz</li>
-            <li>Braizen_10</li>
+            <li>Kenton</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 6</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Itsotieno020</li>
             <li>Mwai</li>
-            <li>itsotieno020</li>
-            <li>Griffo</li>
-            <li>Aniro</li>
+            <li>Boogie</li>
+            <li>Stafyodi</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 7</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Crmax70</li>
+            <li>Storm</li>
+            <li>Atraz</li>
+            <li>AYUMAH</li>
+          </ol>
+          <h4 class="font-bold text-yellow-300 mt-4">Pot 8</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Dukeh</li>
+            <li>Homeywonder</li>
+            <li>Blitzfury</li>
+            <li>Braizen_10</li>
           </ol>
         </div>
       </div>
     </div>
-    
+
     <div class="deadline-notice">
       ⚠️ <strong>Important Tournament Rules:</strong><br>
       1. This is a 5-day tournament with NO postponements allowed<br>
       2. Daily deadline for submitting match results: <strong>Midnight EAT</strong><br>
       3. Failure to complete matches will result in automatic disqualification
     </div>
+  </div>
 
-    <h2 class="text-2xl font-bold mb-4 text-yellow-300 text-center">Match Rules & Structure:</h2>
-    <ul class="list-disc pl-8 space-y-3 text-white text-lg max-w-3xl mx-auto">
-      <li>Knockout format (1-legged matches) starting from Round of 32</li>
-      <li>Match Time: 12 minutes per game</li>
-      <li>Extra Time and Penalties will be used to decide drawn matches</li>
-      <li>Match Conditions: Always set to Excellent (Home & Away)</li>
-      <li>All matches must be completed by the daily deadline</li>
-      <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
-    </ul>
-
-    
-
-    <div class="mt-6 p-3 bg-blue-950 rounded-xl text-blue-200 text-sm border border-blue-600 max-w-3xl mx-auto">
-      <strong>Note:</strong> The tournament bracket is fixed to ensure fair competition and exciting matchups.
-    </div>
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <h2 class="text-3xl font-bold mb-6 text-yellow-400 text-center">League Standings</h2>
+    <table aria-label="League standings table">
+      <thead>
+        <tr>
+          <th>Pos</th>
+          <th>Team</th>
+          <th>Pld</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GF</th>
+          <th>GA</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody id="standings-body">
+        <!-- Standings rows inserted by script -->
+      </tbody>
+    </table>
   </div>
 
   <div class="footer-text animate__animated animate__fadeIn">
@@ -226,10 +275,10 @@
     const players = {
       "Trumperbee": "+254790231190",
       "Saif": "+254758631606",
-      "Ziggy": "+254 113 359005",
+      "Ziggy": "+254113359005",
       "Young_furry": "+254112449057",
-      "Magggggs": "+254115922639",
-      "lanther": "+254718167359",
+      "Magggs": "+254115922639",
+      "Lanther": "+254718167359",
       "Faisal": "+254738333443",
       "Drunken Master": "+254792406027",
       "Mufasa2fly": "+254736567664",
@@ -245,7 +294,7 @@
       "Boogie": "+254742458718",
       "Stafyodi": "+254115635847",
       "Crmax70": "+254716027382",
-      "Storm": "+254 755 733718",
+      "Storm": "+254755733718",
       "Atraz": "+254740412543",
       "AYUMAH": "+254768496839",
       "Dukeh": "+254710838132",
@@ -258,55 +307,129 @@
       "Aniro": "+254719455239"
     };
 
-    // Round of 32 fixtures
+    // Matchday 1 fixtures with results where available
+    // Format: [player1, player2, resultObject or null]
+    // resultObject: {score1: int, score2: int}
     const fixtures = [
-      ["Trumperbee", "Saif"],
-      ["Ziggy", "Young_furry"],
-      ["Magggggs", "lanther"],
-      ["Faisal", "Drunken Master"],
-      ["Mufasa2fly", "Steve"],
-      ["Abishai", "Yotti"],
-      ["Immortaljester", "Turna"],
-      ["Felixmorara", "Kenton"],
-      ["Gitran", "Raydelo"],
-      ["Boogie", "Stafyodi"],
-      ["Crmax70", "Storm"],
-      ["Atraz", "AYUMAH"],
-      ["Dukeh", "Homeywonder"],
-      ["Blitzfury", "Braizen_10"],
-      ["Mwai", "itsotieno020"],
-      ["Griffo", "Aniro"]
+      ["Atraz", "AYUMAH", {score1:7, score2:0}],
+      ["Lanther", "Magggs", {score1:2, score2:4}],
+      ["Ziggy", "Young_furry", {score1:5, score2:4}],
+      ["Mufasa2fly", "Steve", {score1:3, score2:0}],
+      ["Trumperbee", "Saif", null],
+      ["Faisal", "Drunken Master", null],
+      ["Abishai", "Yotti", null],
+      ["Immortaljester", "Turna", null],
+      ["Felixmorara", "Kenton", null],
+      ["Gitran", "Raydelo", null],
+      ["Boogie", "Stafyodi", null],
+      ["Crmax70", "Storm", null],
+      ["Dukeh", "Homeywonder", null],
+      ["Blitzfury", "Braizen_10", null],
+      ["Mwai", "itsotieno020", null],
+      ["Griffo", "Aniro", null]
     ];
 
-    // Render fixtures in the fixture grid
+    // Render fixtures with clickable player names and results or "vs"
     const fixtureGrid = document.querySelector(".fixture-grid");
 
-    fixtures.forEach(([player1, player2]) => {
-      // Create player 1 link
-      const p1 = document.createElement("a");
-      p1.href = `https://wa.me/${players[player1].replace(/\D/g, '')}`;
-      p1.target = "_blank";
-      p1.rel = "noopener noreferrer";
-      p1.className = "player-link";
-      p1.textContent = player1;
+    function renderFixtures() {
+      fixtureGrid.innerHTML = "";
+      fixtures.forEach(([p1, p2, result]) => {
+        // Player 1 link
+        const player1Link = document.createElement("a");
+        player1Link.href = `https://wa.me/${players[p1].replace(/\D/g, '')}`;
+        player1Link.target = "_blank";
+        player1Link.rel = "noopener noreferrer";
+        player1Link.className = "player-link";
+        player1Link.textContent = p1;
 
-      // VS separator
-      const vs = document.createElement("div");
-      vs.className = "vs-separator";
-      vs.textContent = "VS";
+        // Center cell: result or "vs"
+        const centerCell = document.createElement("div");
+        centerCell.className = "match-result";
+        if (result) {
+          centerCell.textContent = `${result.score1} - ${result.score2}`;
+        } else {
+          centerCell.textContent = "vs";
+          centerCell.style.color = "#facc15";
+          centerCell.style.fontWeight = "700";
+          centerCell.style.userSelect = "none";
+          centerCell.style.alignSelf = "center";
+        }
 
-      // Create player 2 link
-      const p2 = document.createElement("a");
-      p2.href = `https://wa.me/${players[player2].replace(/\D/g, '')}`;
-      p2.target = "_blank";
-      p2.rel = "noopener noreferrer";
-      p2.className = "player-link";
-      p2.textContent = player2;
+        // Player 2 link
+        const player2Link = document.createElement("a");
+        player2Link.href = `https://wa.me/${players[p2].replace(/\D/g, '')}`;
+        player2Link.target = "_blank";
+        player2Link.rel = "noopener noreferrer";
+        player2Link.className = "player-link";
+        player2Link.textContent = p2;
 
-      fixtureGrid.appendChild(p1);
-      fixtureGrid.appendChild(vs);
-      fixtureGrid.appendChild(p2);
-    });
+        fixtureGrid.appendChild(player1Link);
+        fixtureGrid.appendChild(centerCell);
+        fixtureGrid.appendChild(player2Link);
+      });
+    }
+
+    // Sample league standings data for demonstration
+    // Normally this would be dynamically calculated from results
+    const standings = [
+      {pos:1, team:"Magggs", pld:1, w:1, d:0, l:0, gf:4, ga:2, gd:2, pts:3},
+      {pos:2, team:"Ziggy", pld:1, w:1, d:0, l:0, gf:5, ga:4, gd:1, pts:3},
+      {pos:3, team:"Mufasa2fly", pld:1, w:1, d:0, l:0, gf:3, ga:0, gd:3, pts:3},
+      {pos:4, team:"Atraz", pld:1, w:1, d:0, l:0, gf:7, ga:0, gd:7, pts:3},
+      {pos:5, team:"AYUMAH", pld:1, w:0, d:0, l:1, gf:0, ga:7, gd:-7, pts:0},
+      {pos:6, team:"Lanther", pld:1, w:0, d:0, l:1, gf:2, ga:4, gd:-2, pts:0},
+      {pos:7, team:"Young_furry", pld:1, w:0, d:0, l:1, gf:4, ga:4, gd:-1, pts:0},
+      {pos:8, team:"Steve", pld:1, w:0, d:0, l:1, gf:0, ga:3, gd:-3, pts:0},
+      {pos:9, team:"Trumperbee", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:10, team:"Saif", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:11, team:"Faisal", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:12, team:"Drunken Master", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:13, team:"Abishai", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:14, team:"Yotti", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:15, team:"Immortaljester", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:16, team:"Turna", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:17, team:"Felixmorara", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:18, team:"Kenton", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:19, team:"Gitran", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:20, team:"Raydelo", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:21, team:"Boogie", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:22, team:"Stafyodi", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:23, team:"Crmax70", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:24, team:"Storm", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:25, team:"Dukeh", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:26, team:"Homeywonder", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:27, team:"Blitzfury", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:28, team:"Braizen_10", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:29, team:"Mwai", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:30, team:"itsotieno020", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:31, team:"Griffo", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0},
+      {pos:32, team:"Aniro", pld:0, w:0, d:0, l:0, gf:0, ga:0, gd:0, pts:0}
+    ];
+
+    function renderStandings() {
+      const tbody = document.getElementById("standings-body");
+      tbody.innerHTML = "";
+      standings.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.pos}</td>
+          <td>${row.team}</td>
+          <td>${row.pld}</td>
+          <td>${row.w}</td>
+          <td>${row.d}</td>
+          <td>${row.l}</td>
+          <td>${row.gf}</td>
+          <td>${row.ga}</td>
+          <td>${row.gd}</td>
+          <td>${row.pts}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    renderFixtures();
+    renderStandings();
   </script>
 </body>
 </html>
