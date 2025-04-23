@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Greatest 64 eFootball League</title>
+  <title>Struggle for the Fittest eFootball League</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -14,158 +14,306 @@
       color: #f0f0f0;
       min-height: 100vh;
     }
-    .players-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .player-item {
-      background: rgba(255 255 255 / 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-align: center;
-      font-weight: 600;
-      color: #ffd43b;
-      box-shadow: 0 2px 6px rgb(255 212 59 / 0.4);
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .player-item:hover {
-      background: rgba(255 255 255 / 0.25);
-      color: #fff;
-      cursor: default;
-    }
     .section-container {
       background: rgba(0 0 0 / 0.5);
       border-radius: 1rem;
       padding: 2rem 2.5rem;
       margin-bottom: 2.5rem;
       box-shadow: 0 8px 20px rgb(0 0 0 / 0.7);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
     h1, h2, h3 {
       font-family: 'Roboto Mono', monospace;
       letter-spacing: 0.05em;
     }
-    button {
-      font-family: 'Poppins', sans-serif;
+    .fixture-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 1fr;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #ffd43b;
+    }
+    .player-link {
+      background: rgba(255 255 255 / 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      color: #ffd43b;
+      box-shadow: 0 2px 6px rgb(255 212 59 / 0.4);
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .player-link:hover {
+      background: rgba(255 255 255 / 0.25);
+      color: #fff;
+    }
+    .vs-separator {
+      text-align: center;
+      color: #facc15;
+      font-weight: 700;
+      user-select: none;
+      align-self: center;
+    }
+    .notice {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #f87171;
+      margin-bottom: 1.5rem;
+    }
+    .info-text {
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.1rem;
+      color: #a5b4fc;
+      font-weight: 600;
+      text-align: center;
+    }
+    .footer-text {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-top: 3rem;
+    }
+    .footer-text a {
+      color: #34d399;
+      text-decoration: underline;
+    }
+    .pot-info {
+      background: rgba(255 255 255 / 0.1);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      text-align: center;
+      border: 1px solid #facc15;
+    }
+    .deadline-notice {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      max-width: 700px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .pot-players {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .pot-column {
+      background: rgba(255 255 255 / 0.05);
+      padding: 1rem;
+      border-radius: 0.5rem;
     }
   </style>
-  <script>
-    async function joinLeague(event) {
-      event.preventDefault();
-      const username = document.getElementById("username").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-
-      if (!username || !phone) {
-        alert("Please fill in all fields.");
-        return;
-      }
-
-      const list = document.getElementById("players-list");
-      const newItem = document.createElement("li");
-      newItem.textContent = username;
-      newItem.className = "animate__animated animate__fadeInRight";
-      list.prepend(newItem);
-
-      window.open("https://chat.whatsapp.com/JWtMOW3vHj1LIbRX9IW1gU", "_blank");
-
-      setTimeout(() => {
-        alert("🎉 Congratulations! You have successfully joined the Greatest 64 eFootball group. Make your application early to secure your spot!");
-      }, 1000);
-    }
-  </script>
 </head>
 <body class="px-6 py-12">
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInDown">
-    <h1 class="text-6xl font-extrabold mb-6 text-yellow-400 text-center animate__animated animate__zoomIn">Greatest 64 League</h1>
-    <p class="text-xl text-center text-green-400 font-semibold mb-3 animate__animated animate__fadeInLeft">⚽ Join the ultimate eFootball knockout battle! 64 teams. 1 Champion. Glory Awaits!</p>
-    <p class="text-lg text-center text-pink-300 mb-8 animate__animated animate__fadeInRight">🎯 <strong>Registration is completely FREE!</strong> Don’t wait — secure your place before it’s full!</p>
-
-    <form onsubmit="joinLeague(event)" class="space-y-6 bg-gray-900 bg-opacity-70 p-6 rounded-2xl shadow-lg animate__animated animate__fadeInUp">
-      <div>
-        <label class="block text-sm font-medium text-yellow-300 mb-1">EFootball Username</label>
-        <input id="username" type="text" class="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-yellow-300 focus:outline-yellow-400" placeholder="e.g., Trumperbee" required />
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-yellow-300 mb-1">WhatsApp Phone Number</label>
-        <input id="phone" type="tel" class="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-yellow-300 focus:outline-yellow-400" placeholder="e.g., +254712345678" required />
-      </div>
-      <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 font-bold py-3 rounded-xl text-gray-900 transition transform hover:scale-105 animate__animated animate__bounceIn">Join the League</button>
-    </form>
+    <h1 class="text-5xl font-extrabold mb-4 text-yellow-400 text-center animate__animated animate__zoomIn">Struggle for the Fittest</h1>
+    <p class="text-xl text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">
+      ⚽ The ultimate eFootball knockout battle! 32 teams. 1 Champion. Glory Awaits!
+    </p>
+    <p class="notice animate__animated animate__fadeInRight">
+      🚫 Registration is now <strong>closed</strong>. The tournament is underway.
+    </p>
+    <p class="info-text animate__animated animate__fadeInUp">
+      This is a knockout tournament. Teams face off in one-legged matches starting from the Round of 32.
+    </p>
   </div>
-
-  <!-- Registered Players Full List -->
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeIn">
-    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Registered Players (32)</h2>
-    <div class="players-grid" aria-label="List of registered players">
-      <div class="player-item">Mufasa2fly</div>
-      <div class="player-item">Gitran</div>
-      <div class="player-item">Magggggs</div>
-      <div class="player-item">Drunken Master</div>
-      <div class="player-item">Boogie</div>
-      <div class="player-item">Raydelo</div>
-      <div class="player-item">Felixmorara</div>
-      <div class="player-item">Aniro</div>
-      <div class="player-item">Abishai</div>
-      <div class="player-item">Mufasa</div>
-      <div class="player-item">Stafyodi</div>
-      <div class="player-item">Turna</div>
-      <div class="player-item">Yotti</div>
-      <div class="player-item">Kenton</div>
-      <div class="player-item">Griffo</div>
-      <div class="player-item">Saif</div>
-      <div class="player-item">Immortaljester</div>
-      <div class="player-item">Mwai</div>
-      <div class="player-item">itsotieno020</div>
-      <div class="player-item">Crmax70</div>
-      <div class="player-item">lanther</div>
-      <div class="player-item">Young_furry</div>
-      <div class="player-item">Atraz</div>
-      <div class="player-item">Okwoyo</div>
-      <div class="player-item">Steve</div>
-      <div class="player-item">Faisal</div>
-      <div class="player-item">Trumperbee</div>
-      <div class="player-item">Dukeh</div>
-      <div class="player-item">Blitzfury</div>
-      <div class="player-item">Homeywonder</div>
-      <div class="player-item">AYUMAH</div>
-      <div class="player-item">Braizen_10</div>
-    </div>
-  </div>
-
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-2xl font-bold mb-4 text-yellow-300 text-center">Match Rules & Structure:</h2>
-    <ul class="list-disc pl-8 space-y-3 text-white text-lg max-w-3xl mx-auto">
-      <li>Knockout format (1-legged game) until the Last 16</li>
-      <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
-      <li>Match Time: 12 minutes per game</li>
-      <li>No extra time or penalties in 2-leg matches</li>
-      <li><strong>3rd Match Rule:</strong> If aggregate is a draw,play a 6-min match with ET + Pens</li>
-        <li>Match Conditions: Always set to Excellent (Home & Away)</li>
-      </ul>
-
-      <h3 class="text-lg font-semibold mt-4 text-yellow-300">Prizes to be Won:</h3>
-      <ul class="list-disc pl-5 space-y-1 text-white animate__animated animate__pulse">
-        <li>🥇 1st Place: Ksh 1000</li>
-        <li>🥈 2nd Place: Ksh 500</li>
-        <li>🥉 3rd Place: Ksh 200</li>
-        <li>🛡️ Best Defence: Ksh 50 (Least goals conceded)</li>
-        <li>⚔️ Best Attack: Ksh 50 (Most goals scored)</li>
-      </ul>
-
-      <div class="mt-6 p-3 bg-blue-950 rounded-xl text-blue-200 text-sm border border-blue-600">
-        <strong>Note:</strong> After joining the WhatsApp group, send your username to the admin to confirm your slot.
-      </div>
-    </div>
-
-    <div class="text-center mt-10 text-sm text-gray-400 animate__animated animate__fadeIn">
-      <p>Developed by <strong class="text-yellow-400">Technical Staff</strong></p>
-      <p>Contact me via <a href="https://wa.me/254790231190" class="text-green-400 underline">WhatsApp</a></p>
-      <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>
+    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Round of 32 Fixtures</h2>
+    <div class="fixture-grid" aria-label="Round of 32 fixtures">
+      <!-- Fixtures will be inserted here by script -->
     </div>
   </div>
+
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <div class="pot-info">
+      <h3 class="text-xl font-bold mb-2 text-yellow-300">Tournament Structure</h3>
+      <p class="text-white mb-4">There are two pots, each with 16 teams. The two semifinalists will come from each pot.</p>
+      
+      <div class="pot-players">
+        <div class="pot-column">
+          <h4 class="font-bold text-yellow-300 mb-2">Pot A</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Trumperbee</li>
+            <li>Saif</li>
+            <li>Young_furry</li>
+            <li>lanther</li>
+            <li>Drunken Master</li>
+            <li>Steve</li>
+            <li>Yotti</li>
+            <li>Turna</li>
+            <li>Kenton</li>
+            <li>Raydelo</li>
+            <li>Stafyodi</li>
+            <li>Okwoyo</li>
+            <li>AYUMAH</li>
+            <li>Dukeh</li>
+            <li>Homeywonder</li>
+            <li>Blitzfury</li>
+          </ol>
+        </div>
+        <div class="pot-column">
+          <h4 class="font-bold text-yellow-300 mb-2">Pot B</h4>
+          <ol class="list-decimal pl-5 text-white">
+            <li>Mufasa</li>
+            <li>Mufasa2fly</li>
+            <li>Magggggs</li>
+            <li>Faisal</li>
+            <li>Abishai</li>
+            <li>Immortaljester</li>
+            <li>Felixmorara</li>
+            <li>Gitran</li>
+            <li>Boogie</li>
+            <li>Crmax70</li>
+            <li>Atraz</li>
+            <li>Braizen_10</li>
+            <li>Mwai</li>
+            <li>itsotieno020</li>
+            <li>Griffo</li>
+            <li>Aniro</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <div class="deadline-notice">
+      ⚠️ <strong>Important Tournament Rules:</strong><br>
+      1. This is a 5-day tournament with NO postponements allowed<br>
+      2. Daily deadline for submitting match results: <strong>Midnight EAT</strong><br>
+      3. Failure to complete matches will result in automatic disqualification
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4 text-yellow-300 text-center">Match Rules & Structure:</h2>
+    <ul class="list-disc pl-8 space-y-3 text-white text-lg max-w-3xl mx-auto">
+      <li>Knockout format (1-legged matches) starting from Round of 32</li>
+      <li>Match Time: 12 minutes per game</li>
+      <li>Extra Time and Penalties will be used to decide drawn matches</li>
+      <li>Match Conditions: Always set to Excellent (Home & Away)</li>
+      <li>All matches must be completed by the daily deadline</li>
+      <li><strong>Losers Bracket:</strong> From Last 16 onwards, eliminated teams fight for 3rd place</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold mt-4 text-yellow-300">Prizes to be Won:</h3>
+    <ul class="list-disc pl-5 space-y-1 text-white animate__animated animate__pulse max-w-3xl mx-auto">
+      <li>🥇 1st Place: Ksh 1000</li>
+      <li>🥈 2nd Place: Ksh 500</li>
+      <li>🥉 3rd Place: Ksh 200</li>
+      <li>🛡️ Best Defence: Ksh 50 (Least goals conceded)</li>
+      <li>⚔️ Best Attack: Ksh 50 (Most goals scored)</li>
+    </ul>
+
+    <div class="mt-6 p-3 bg-blue-950 rounded-xl text-blue-200 text-sm border border-blue-600 max-w-3xl mx-auto">
+      <strong>Note:</strong> The tournament bracket is fixed to ensure fair competition and exciting matchups.
+    </div>
+  </div>
+
+  <div class="footer-text animate__animated animate__fadeIn">
+    <p>Developed by <strong class="text-yellow-400">Technical Staff</strong></p>
+    <p>Contact via <a href="https://wa.me/254790231190" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
+    <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>
+  </div>
+
+  <script>
+    // Player data with phone numbers
+    const players = {
+      "Trumperbee": "+254790231190",
+      "Saif": "+254758631606",
+      "Mufasa": "+254715996329",
+      "Young_furry": "+254112449057",
+      "Magggggs": "+254115922639",
+      "lanther": "+254718167359",
+      "Faisal": "+254738333443",
+      "Drunken Master": "+254792406027",
+      "Mufasa2fly": "+254736567664",
+      "Steve": "+254701504755",
+      "Abishai": "+254759217313",
+      "Yotti": "+254701289677",
+      "Immortaljester": "+254743484006",
+      "Turna": "+254748632463",
+      "Felixmorara": "+254715281820",
+      "Kenton": "+254704152817",
+      "Gitran": "+254794209536",
+      "Raydelo": "+254114118860",
+      "Boogie": "+254742458718",
+      "Stafyodi": "+254115635847",
+      "Crmax70": "+254716027382",
+      "Okwoyo": "+254754420790",
+      "Atraz": "+254740412543",
+      "AYUMAH": "+254768496839",
+      "Dukeh": "+254710838132",
+      "Homeywonder": "+254743960664",
+      "Blitzfury": "+254729861714",
+      "Braizen_10": "+254725912919",
+      "Mwai": "+254794707385",
+      "itsotieno020": "+254742245445",
+      "Griffo": "+254745147572",
+      "Aniro": "+254719455239"
+    };
+
+    // Round of 32 fixtures
+    const fixtures = [
+      ["Trumperbee", "Saif"],
+      ["Mufasa", "Young_furry"],
+      ["Magggggs", "lanther"],
+      ["Faisal", "Drunken Master"],
+      ["Mufasa2fly", "Steve"],
+      ["Abishai", "Yotti"],
+      ["Immortaljester", "Turna"],
+      ["Felixmorara", "Kenton"],
+      ["Gitran", "Raydelo"],
+      ["Boogie", "Stafyodi"],
+      ["Crmax70", "Okwoyo"],
+      ["Atraz", "AYUMAH"],
+      ["Dukeh", "Homeywonder"],
+      ["Blitzfury", "Braizen_10"],
+      ["Mwai", "itsotieno020"],
+      ["Griffo", "Aniro"]
+    ];
+
+    // Render fixtures in the fixture grid
+    const fixtureGrid = document.querySelector(".fixture-grid");
+
+    fixtures.forEach(([player1, player2]) => {
+      // Create player 1 link
+      const p1 = document.createElement("a");
+      p1.href = `https://wa.me/${players[player1].replace(/\D/g, '')}`;
+      p1.target = "_blank";
+      p1.rel = "noopener noreferrer";
+      p1.className = "player-link";
+      p1.textContent = player1;
+
+      // VS separator
+      const vs = document.createElement("div");
+      vs.className = "vs-separator";
+      vs.textContent = "VS";
+
+      // Create player 2 link
+      const p2 = document.createElement("a");
+      p2.href = `https://wa.me/${players[player2].replace(/\D/g, '')}`;
+      p2.target = "_blank";
+      p2.rel = "noopener noreferrer";
+      p2.className = "player-link";
+      p2.textContent = player2;
+
+      fixtureGrid.appendChild(p1);
+      fixtureGrid.appendChild(vs);
+      fixtureGrid.appendChild(p2);
+    });
+  </script>
 </body>
 </html>
