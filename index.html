@@ -166,6 +166,39 @@
     .team-link:hover {
       color: #fff;
     }
+    .tactical-analysis {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+      border-left: 4px solid #facc15;
+    }
+    .tactical-analysis h3 {
+      color: #facc15;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .analysis-section {
+      margin-bottom: 1.5rem;
+    }
+    .analysis-section h4 {
+      color: #34d399;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .prediction-table {
+      width: 100%;
+      margin-top: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .prediction-table th {
+      background-color: #b45309;
+      padding: 0.5rem;
+    }
+    .prediction-table td {
+      padding: 0.5rem;
+      border: 1px solid #facc15;
+    }
   </style>
 </head>
 <body class="px-6 py-12">
@@ -178,92 +211,14 @@
       🚫 Registration is now <strong>closed</strong>. The tournament is underway.
     </p>
     <p class="info-text animate__animated animate__fadeInUp">
-      This tournament uses the new UCL-style format with 8 pots of 4 teams each. Teams face others in their pot in a league phase. After Matchday 3, the top 8 in the overall standings qualify directly to the Round of 16. Teams ranked 9-24 enter knockout playoffs for the remaining Round of 16 spots. Teams ranked 25-32 are eliminated.
+      This is a knockout tournament with two pots of 16 teams each. The two semifinalists will come from each pot, ensuring top players don't meet before the finals.
     </p>
   </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 2 Fixtures</h2>
-    <div class="fixture-grid" id="fixture-grid" aria-label="Matchday 2 fixtures">
+    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 3 Fixtures</h2>
+    <div class="fixture-grid" id="matchday3-fixtures" aria-label="Matchday 3 fixtures">
       <!-- Fixtures will be inserted here by JavaScript -->
-    </div>
-  </div>
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <div class="pot-info">
-      <h3 class="text-xl font-bold mb-2 text-yellow-300">Tournament Structure</h3>
-      <p class="text-white mb-4">
-        There are 8 pots, each containing 4 teams. Teams in each pot face one another in a league phase to create a league table. After Matchday 3, the top 8 teams in the overall league standings qualify directly to the Round of 16. Teams ranked 9 to 24 enter knockout playoffs, with winners earning the remaining Round of 16 spots. Teams ranked 25 to 32 are eliminated from the tournament.
-      </p>
-      <div class="pot-players">
-        <div class="pot-column">
-          <h4 class="font-bold text-yellow-300">Pot 1</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Gitran</li>
-            <li>Raydelo</li>
-            <li>Saif</li>
-            <li>Trumperbee</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 2</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Magggs</li>
-            <li>Lanther</li>
-            <li>Griffo</li>
-            <li>Aniro</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 3</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Ziggy</li>
-            <li>Young_furry</li>
-            <li>Faisal</li>
-            <li>Drunken Master</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 4</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Mufasa2fly</li>
-            <li>Steve</li>
-            <li>Abishai</li>
-            <li>Yotti</li>
-          </ol>
-        </div>
-        <div class="pot-column">
-          <h4 class="font-bold text-yellow-300">Pot 5</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Immortaljester</li>
-            <li>Turna</li>
-            <li>Felixmorara</li>
-            <li>Kenton</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 6</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Itsotieno020</li>
-            <li>Mwai</li>
-            <li>Boogie</li>
-            <li>Stafyodi</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 7</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Crmax70</li>
-            <li>Storm</li>
-            <li>Atraz</li>
-            <li>AYUMAH</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 8</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Dukeh</li>
-            <li>Homeywonder</li>
-            <li>Blitzfury</li>
-            <li>Braizen_10</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="deadline-notice mt-6 text-yellow-400 font-semibold text-center">
-        ⚠️ <strong>Important Tournament Rules:</strong><br>
-        1. This is a 5-day tournament with NO postponements allowed<br>
-        2. Daily deadline for submitting match results: <strong>Midnight EAT</strong><br>
-        3. Failure to complete matches will result in automatic disqualification
-      </div>
     </div>
   </div>
 
@@ -288,6 +243,104 @@
         <!-- Standings rows will be inserted here by JavaScript -->
       </tbody>
     </table>
+
+    <div class="tactical-analysis">
+      <h3>Tactical Analysis of Key Results</h3>
+      
+      <div class="analysis-section">
+        <h4>1. Dominant Performers (Contenders for Top 8)</h4>
+        <p><strong>Trumperbee (8-3 vs Gitran):</strong><br>
+        <em>Analysis:</em> Overwhelming attacking display. Scored 14 goals in 2 matches (6-0, 8-3).<br>
+        <em>Prediction:</em> <strong>Locked for top 8</strong>. Potential finalist if defense tightens.</p>
+        
+        <p><strong>Faisal (4-0, 4-1):</strong><br>
+        <em>Analysis:</em> Clinical finishing + clean sheets. Controlled both games tactically.<br>
+        <em>Prediction:</em> <strong>Top 8 certainty</strong>. Dark horse for the title.</p>
+        
+        <p><strong>Aniro (8-0, 3-1):</strong><br>
+        <em>Analysis:</em> Brutal efficiency (11 goals in 2 games). Griffo's 0-0 vs Magggs suggests Pot 2 is theirs to lose.<br>
+        <em>Prediction:</em> <strong>Will win Pot 2</strong>. Semifinal potential.</p>
+        
+        <p><strong>Felixmorara (1-0, 2-1):</strong><br>
+        <em>Analysis:</em> Grinding out results. Kenton (3-2) is their only Pot 5 threat.<br>
+        <em>Prediction:</em> <strong>Pot 5 winner</strong>. Could upset in playoffs.</p>
+        
+        <p><strong>Dukeh (1-0, 2-1) & Braizen_10 (0-1, 3-1):</strong><br>
+        <em>Analysis:</em> Pot 8's strongest. Dukeh's defense vs Braizen's attack (3 goals vs Homeywonder).<br>
+        <em>Prediction:</em> <strong>Both could advance</strong> (Dukeh top 8, Braizen playoffs).</p>
+      </div>
+      
+      <div class="analysis-section">
+        <h4>2. Underperformers (Risk of Elimination)</h4>
+        <p><strong>Gitran (0-1, 3-8):</strong><br>
+        <em>Analysis:</em> Conceded 9 goals in 2 games. Defensive chaos.<br>
+        <em>Prediction:</em> <strong>Likely eliminated</strong> (Pot 1's weakest).</p>
+        
+        <p><strong>AYUMAH (0-7, 0-6):</strong><br>
+        <em>Analysis:</em> 13 goals conceded. No tactical structure.<br>
+        <em>Prediction:</em> <strong>Certain elimination</strong> (Ranked 31/32).</p>
+        
+        <p><strong>Blitzfury (0-1, 1-2):</strong><br>
+        <em>Analysis:</em> Failed to score from open play.<br>
+        <em>Prediction:</em> <strong>25-32 elimination</strong>.</p>
+      </div>
+      
+      <div class="analysis-section">
+        <h4>3. Surprise Packages</h4>
+        <p><strong>Itsotieno020 (1-2, 1-0):</strong><br>
+        <em>Analysis:</em> Resilient vs Mwai/Boogie.<br>
+        <em>Prediction:</em> <strong>Playoff contender</strong> (Pot 6 runner-up).</p>
+        
+        <p><strong>Storm (3-3, 6-0):</strong><br>
+        <em>Analysis:</em> Went from draw to demolition.<br>
+        <em>Prediction:</em> <strong>Pot 7 winner</strong> if they beat Atraz.</p>
+      </div>
+      
+      <table class="prediction-table">
+        <thead>
+          <tr>
+            <th colspan="3">📊 Predicted League Standings After Matchday 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Top 8 (Direct Qualification)</strong></td>
+            <td colspan="2">
+              1. Trumperbee (Pot 1)<br>
+              2. Faisal (Pot 3)<br>
+              3. Aniro (Pot 2)<br>
+              4. Felixmorara (Pot 5)<br>
+              5. Dukeh (Pot 8)<br>
+              6. Braizen_10 (Pot 8)<br>
+              7. Storm (Pot 7)<br>
+              8. Kenton (Pot 5)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Playoff Contenders (9th-24th)</strong></td>
+            <td colspan="2">
+              Saif, Mufasa2fly, Magggs, Griffo, Drunken Master, Immortaljester, Itsotieno020, Crmax70
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Eliminated (25th-32nd)</strong></td>
+            <td colspan="2">
+              Gitran, AYUMAH, Blitzfury, Homeywonder, Lanther, Turna, Boogie, Stafyodi
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="analysis-section">
+        <h4>⚡ Key Takeaways</h4>
+        <ul>
+          <li><strong>Trumperbee vs Faisal</strong> is the <strong>projected final</strong> (both dominating their pots).</li>
+          <li><strong>Pot 8 (Dukeh/Braizen)</strong> is the most competitive.</li>
+          <li><strong>Defensive teams</strong> (e.g., Felix Morara, 1-0 win and 2-1 win) could upset in playoffs.</li>
+          <li><strong>Avoid Relegation Battle:</strong> Teams like Griffo (0-0 vs Magggs) must win MD3 to survive.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="footer-text animate__animated animate__fadeIn">
@@ -301,7 +354,7 @@
     const players = {
       "Trumperbee": "+254790231190",
       "Saif": "+254758631606",
-      "Ziggy": "+254113359005",
+      "Mufasa": "+254715996329",
       "Young_furry": "+254112449057",
       "Magggs": "+254115922639",
       "Lanther": "+254718167359",
@@ -320,7 +373,6 @@
       "Boogie": "+254742458718",
       "Stafyodi": "+254115635847",
       "Crmax70": "+254716027382",
-      "Storm": "+254755733718",
       "Atraz": "+254740412543",
       "AYUMAH": "+254768496839",
       "Dukeh": "+254710838132",
@@ -330,31 +382,53 @@
       "Mwai": "+254794707385",
       "Itsotieno020": "+254742245445",
       "Griffo": "+254745147572",
-      "Aniro": "+254719455239"
+      "Aniro": "+254719455239",
+      "Storm": "+254755733718",
+      "Ziggy": "+254113359005"
     };
 
-    // Matchday 2 fixtures (no results yet)
-    const matchday2Fixtures = [
-      ["Gitran", "Trumperbee"],
-      ["Raydelo", "Saif"],
-      ["Magggs", "Griffo"],
-      ["Lanther", "Aniro"],
-      ["Ziggy", "Faisal"],
-      ["Young_furry", "Drunken Master"],
-      ["Mufasa2fly", "Abishai"],
-      ["Steve", "Yotti"],
-      ["Immortaljester", "Felixmorara"],
-      ["Turna", "Kenton"],
-      ["Itsotieno020", "Boogie"],
-      ["Mwai", "Stafyodi"],
-      ["Crmax70", "Atraz"],
-      ["Storm", "AYUMAH"],
-      ["Dukeh", "Blitzfury"],
-      ["Homeywonder", "Braizen_10"]
+    // Matchday 3 fixtures
+    const matchday3Fixtures = [
+      ["Gitran", "Saif"],
+      ["Raydelo", "Trumperbee"],
+      ["Magggs", "Aniro"],
+      ["Lanther", "Griffo"],
+      ["Ziggy", "Drunken Master"],
+      ["Young_furry", "Faisal"],
+      ["Mufasa2fly", "Yotti"],
+      ["Steve", "Abishai"],
+      ["Immortaljester", "Kenton"],
+      ["Turna", "Felixmorara"],
+      ["Itsotieno020", "Stafyodi"],
+      ["Mwai", "Boogie"],
+      ["Crmax70", "AYUMAH"],
+      ["Storm", "Atraz"],
+      ["Dukeh", "Braizen_10"],
+      ["Homeywonder", "Blitzfury"]
     ];
 
-    // Matchday 1 fixtures with results
-    const matchday1Fixtures = [
+    // Matchday 2 results
+    const matchday2Results = [
+      ["Crmax70", "Atraz", {score1:3, score2:2}],
+      ["Braizen_10", "Homeywonder", {score1:3, score2:1}],
+      ["Trumperbee", "Gitran", {score1:8, score2:3}],
+      ["Felixmorara", "Immortaljester", {score1:2, score2:1}],
+      ["Faisal", "Ziggy", {score1:4, score2:1}],
+      ["Aniro", "Lanther", {score1:3, score2:1}],
+      ["Dukeh", "Blitzfury", {score1:2, score2:1}],
+      ["Kenton", "Turna", {score1:3, score2:2}],
+      ["Itsotieno020", "Boogie", {score1:1, score2:0}],
+      ["Storm", "AYUMAH", {score1:6, score2:0}],
+      ["Magggs", "Griffo", {score1:0, score2:0}],
+      ["Saif", "Raydelo", {score1:3, score2:0}],
+      ["Mwai", "Stafyodi", {score1:3, score2:0}],
+      ["Abishai", "Mufasa2fly", {score1:2, score2:0}],
+      ["Steve", "Yotti", {score1:0, score2:0}],
+      ["Drunken Master", "Young_furry", {score1:1, score2:1}]
+    ];
+
+    // Matchday 1 results
+    const matchday1Results = [
       ["Atraz", "AYUMAH", {score1:7, score2:0}],
       ["Lanther", "Magggs", {score1:2, score2:4}],
       ["Ziggy", "Young_furry", {score1:5, score2:4}],
@@ -389,43 +463,63 @@
       };
     });
 
-    // Process matchday 1 results to update standings
-    matchday1Fixtures.forEach(match => {
-      const [team1, team2, result] = match;
-      standings[team1].pld++;
-      standings[team2].pld++;
-      
-      standings[team1].gf += result.score1;
-      standings[team1].ga += result.score2;
-      standings[team2].gf += result.score2;
-      standings[team2].ga += result.score1;
-      
-      standings[team1].gd = standings[team1].gf - standings[team1].ga;
-      standings[team2].gd = standings[team2].gf - standings[team2].ga;
-      
-      if (result.score1 > result.score2) {
-        standings[team1].w++;
-        standings[team2].l++;
-        standings[team1].pts += 3;
-      } else if (result.score1 < result.score2) {
-        standings[team2].w++;
-        standings[team1].l++;
-        standings[team2].pts += 3;
-      } else {
-        standings[team1].d++;
-        standings[team2].d++;
-        standings[team1].pts += 1;
-        standings[team2].pts += 1;
-      }
-    });
+    // Process match results to update standings
+    function processMatchResults(matches) {
+      matches.forEach(match => {
+        const [team1, team2, result] = match;
+        if (!standings[team1] || !standings[team2]) {
+          console.error("Missing team in standings:", team1, team2);
+          return;
+        }
+        
+        standings[team1].pld++;
+        standings[team2].pld++;
+        
+        standings[team1].gf += result.score1;
+        standings[team1].ga += result.score2;
+        standings[team2].gf += result.score2;
+        standings[team2].ga += result.score1;
+        
+        standings[team1].gd = standings[team1].gf - standings[team1].ga;
+        standings[team2].gd = standings[team2].gf - standings[team2].ga;
+        
+        if (result.score1 > result.score2) {
+          standings[team1].w++;
+          standings[team2].l++;
+          standings[team1].pts += 3;
+        } else if (result.score1 < result.score2) {
+          standings[team2].w++;
+          standings[team1].l++;
+          standings[team2].pts += 3;
+        } else {
+          standings[team1].d++;
+          standings[team2].d++;
+          standings[team1].pts += 1;
+          standings[team2].pts += 1;
+        }
+      });
+    }
 
-    // Function to render matchday 2 fixtures
-    function renderFixtures() {
-      const fixtureGrid = document.getElementById('fixture-grid');
+    // Process all match results
+    processMatchResults(matchday1Results);
+    processMatchResults(matchday2Results);
+
+    // Function to render matchday 3 fixtures
+    function renderMatchday3Fixtures() {
+      const fixtureGrid = document.getElementById('matchday3-fixtures');
+      if (!fixtureGrid) {
+        console.error("Fixture grid element not found");
+        return;
+      }
       fixtureGrid.innerHTML = '';
       
-      matchday2Fixtures.forEach(fixture => {
+      matchday3Fixtures.forEach(fixture => {
         const [player1, player2] = fixture;
+        
+        if (!players[player1] || !players[player2]) {
+          console.error("Missing player data:", player1, player2);
+          return;
+        }
         
         // Player 1 link
         const player1Link = document.createElement('a');
@@ -458,6 +552,10 @@
     // Function to render standings table
     function renderStandings() {
       const standingsBody = document.getElementById('standings-body');
+      if (!standingsBody) {
+        console.error("Standings body element not found");
+        return;
+      }
       standingsBody.innerHTML = '';
       
       // Convert standings to array and sort
@@ -513,7 +611,8 @@
 
     // Initialize the page when loaded
     document.addEventListener('DOMContentLoaded', function() {
-      renderFixtures();
+      console.log("DOM fully loaded");
+      renderMatchday3Fixtures();
       renderStandings();
     });
   </script>
