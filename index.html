@@ -359,7 +359,7 @@
       "Ziggy": "+254113359005"
     };
 
-    // Matchday 3 fixtures with results (completed matches first)
+    // Matchday 3 fixtures with ALL results (completed and upcoming)
     const matchday3Fixtures = [
       ["Crmax70", "AYUMAH", {score1:4, score2:2}],
       ["Dukeh", "Braizen_10", {score1:4, score2:2}],
@@ -371,17 +371,17 @@
       ["Atraz", "Storm", {score1:3, score2:1}],
       ["Lanther", "Griffo", {score1:5, score2:0}],
       ["Steve", "Abishai", {score1:2, score2:0}],
+      ["Aniro", "Magggs", {score1:6, score2:2}],
+      ["Homeywonder", "Blitzfury", {score1:0, score2:0}],
       // Remaining fixtures (no results yet)
       ["Gitran", "Saif"],
-      ["Magggs", "Aniro"],
       ["Young_furry", "Faisal"],
       ["Mufasa2fly", "Yotti"],
-      ["Mwai", "Boogie"],
-      ["Homeywonder", "Blitzfury"]
+      ["Mwai", "Boogie"]
     ];
 
-    // All match results combined (for standings)
-    const allMatchResults = [
+    // Combined array of all completed matches from all matchdays
+    const allCompletedMatches = [
       // Matchday 1 Results
       ["Atraz", "AYUMAH", {score1:7, score2:0}],
       ["Lanther", "Magggs", {score1:2, score2:4}],
@@ -418,7 +418,7 @@
       ["Steve", "Yotti", {score1:0, score2:0}],
       ["Drunken Master", "Young_furry", {score1:1, score2:1}],
       
-      // Matchday 3 Results (completed matches only)
+      // Matchday 3 Results (only completed matches)
       ["Crmax70", "AYUMAH", {score1:4, score2:2}],
       ["Dukeh", "Braizen_10", {score1:4, score2:2}],
       ["Itsotieno020", "Stafyodi", {score1:3, score2:2}],
@@ -427,126 +427,62 @@
       ["Trumperbee", "Raydelo", {score1:3, score2:0}],
       ["Drunken Master", "Ziggy", {score1:4, score2:3}],
       ["Atraz", "Storm", {score1:3, score2:1}],
-      ["Lanther", "Griffo", {score1:5, score2:0}]
+      ["Lanther", "Griffo", {score1:5, score2:0}],
+      ["Steve", "Abishai", {score1:2, score2:0}],
+      ["Aniro", "Magggs", {score1:6, score2:2}],
+      ["Homeywonder", "Blitzfury", {score1:0, score2:0}]
     ];
 
-    // Add this function to process and update everything:
-function updateAllResults() {
-    // Clear existing standings
-    standings = {};
-    Object.keys(players).forEach(player => {
-        standings[player] = {
-            team: player,
-            pld: 0,
-            w: 0,
-            d: 0,
-            l: 0,
-            gf: 0,
-            ga: 0,
-            gd: 0,
-            pts: 0
-        };
-    });
+    // Initialize standings
+    let standings = {};
 
-    // Process all results again
-    allMatchResults.forEach(match => {
+    // Function to completely rebuild standings from all matches
+    function rebuildStandings() {
+      // Reset all standings
+      standings = {};
+      Object.keys(players).forEach(player => {
+        standings[player] = {
+          team: player,
+          pld: 0, w: 0, d: 0, l: 0,
+          gf: 0, ga: 0, gd: 0, pts: 0
+        };
+      });
+
+      // Process all completed matches
+      allCompletedMatches.forEach(match => {
         const [team1, team2, result] = match;
         
         if (result && typeof result.score1 === 'number' && typeof result.score2 === 'number') {
-            // Update team1 stats
-            standings[team1].pld++;
-            standings[team1].gf += result.score1;
-            standings[team1].ga += result.score2;
-            standings[team1].gd = standings[team1].gf - standings[team1].ga;
-            
-            // Update team2 stats
-            standings[team2].pld++;
-            standings[team2].gf += result.score2;
-            standings[team2].ga += result.score1;
-            standings[team2].gd = standings[team2].gf - standings[team2].ga;
-            
-            // Update points
-            if (result.score1 > result.score2) {
-                standings[team1].w++;
-                standings[team1].pts += 3;
-                standings[team2].l++;
-            } else if (result.score1 < result.score2) {
-                standings[team2].w++;
-                standings[team2].pts += 3;
-                standings[team1].l++;
-            } else {
-                standings[team1].d++;
-                standings[team2].d++;
-                standings[team1].pts += 1;
-                standings[team2].pts += 1;
-            }
+          // Update team1 stats
+          standings[team1].pld++;
+          standings[team1].gf += result.score1;
+          standings[team1].ga += result.score2;
+          standings[team1].gd = standings[team1].gf - standings[team1].ga;
+          
+          // Update team2 stats
+          standings[team2].pld++;
+          standings[team2].gf += result.score2;
+          standings[team2].ga += result.score1;
+          standings[team2].gd = standings[team2].gf - standings[team2].ga;
+          
+          // Update points
+          if (result.score1 > result.score2) {
+            standings[team1].w++;
+            standings[team1].pts += 3;
+            standings[team2].l++;
+          } else if (result.score1 < result.score2) {
+            standings[team2].w++;
+            standings[team2].pts += 3;
+            standings[team1].l++;
+          } else {
+            standings[team1].d++;
+            standings[team2].d++;
+            standings[team1].pts += 1;
+            standings[team2].pts += 1;
+          }
         }
-    });
-
-    // Re-render the standings
-    renderStandings();
-}
-
-// Then modify your initialization to use this:
-document.addEventListener('DOMContentLoaded', () => {
-    renderMatchday3Fixtures();
-    updateAllResults(); // This will process results and render standings
-});
-    // Initialize standings
-    let standings = {};
-    Object.keys(players).forEach(player => {
-      standings[player] = {
-        team: player,
-        pld: 0,
-        w: 0,
-        d: 0,
-        l: 0,
-        gf: 0,
-        ga: 0,
-        gd: 0,
-        pts: 0
-      };
-    });
-
-    // Add the new result
-allMatchResults.push(["Steve", "Abishai", {score1:2, score2:0}]);
-
-// Update everything
-updateAllResults();
-    // Process all match results for standings
-    allMatchResults.forEach(match => {
-      const [team1, team2, result] = match;
-      
-      if (result && typeof result.score1 === 'number' && typeof result.score2 === 'number') {
-        // Update team1 stats
-        standings[team1].pld++;
-        standings[team1].gf += result.score1;
-        standings[team1].ga += result.score2;
-        standings[team1].gd = standings[team1].gf - standings[team1].ga;
-        
-        // Update team2 stats
-        standings[team2].pld++;
-        standings[team2].gf += result.score2;
-        standings[team2].ga += result.score1;
-        standings[team2].gd = standings[team2].gf - standings[team2].ga;
-        
-        // Update points
-        if (result.score1 > result.score2) {
-          standings[team1].w++;
-          standings[team1].pts += 3;
-          standings[team2].l++;
-        } else if (result.score1 < result.score2) {
-          standings[team2].w++;
-          standings[team2].pts += 3;
-          standings[team1].l++;
-        } else {
-          standings[team1].d++;
-          standings[team2].d++;
-          standings[team1].pts += 1;
-          standings[team2].pts += 1;
-        }
-      }
-    });
+      });
+    }
 
     // Function to render Matchday 3 fixtures
     function renderMatchday3Fixtures() {
@@ -606,6 +542,7 @@ updateAllResults();
       standingsArray.forEach((team, index) => {
         const row = document.createElement('tr');
         
+        // Apply qualification classes
         if (index < 8) {
           row.className = 'direct-qualifier';
         } else if (index < 24) {
@@ -631,11 +568,20 @@ updateAllResults();
       });
     }
 
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
+    // Function to update everything
+    function updateAll() {
+      rebuildStandings();
       renderMatchday3Fixtures();
       renderStandings();
-    });
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', updateAll);
+
+    // To add new results later, you would:
+    // 1. Add to matchday3Fixtures array
+    // 2. Add to allCompletedMatches array
+    // 3. Call updateAll()
 </script>
 </body>
 </html>
