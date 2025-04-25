@@ -169,6 +169,39 @@
     .team-link:hover {
       color: #fff;
     }
+    .league-completed {
+      background: linear-gradient(135deg, #4a044e, #190061);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      margin: 1rem auto;
+      max-width: 700px;
+      border: 2px solid #facc15;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .playoff-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.3fr 1fr;
+      gap: 0.8rem;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .eliminated-teams {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .eliminated-team {
+      background: rgba(239, 68, 68, 0.2);
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ef4444;
+    }
 
     @media (max-width: 640px) {
       .section-container {
@@ -181,7 +214,7 @@
       h2 {
         font-size: 1.5rem;
       }
-      .fixture-grid {
+      .fixture-grid, .playoff-grid {
         grid-template-columns: 1fr 0.3fr 1fr;
         gap: 0.5rem;
         font-size: 0.9rem;
@@ -208,89 +241,21 @@
     <p class="text-lg sm:text-xl text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">
       ⚽ The ultimate eFootball knockout battle! 32 teams. 1 Champion. Glory Awaits!
     </p>
+    <div class="league-completed animate__animated animate__pulse">
+      🎉 LEAGUE PHASE COMPLETED! 🏆 The group stage battles are over - now the real tournament begins!
+    </div>
     <p class="notice animate__animated animate__fadeInRight">
       🚫 Registration is now <strong>closed</strong>. The tournament is underway.
     </p>
     <p class="info-text animate__animated animate__fadeInUp">
-      This is a knockout tournament with two pots of 16 teams each. The two semifinalists will come from each pot, ensuring top players don't meet before the finals.
+      The top 8 teams have secured direct qualification to the Round of 16! Teams ranked 9-24 will battle in playoffs for the remaining spots.
     </p>
   </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 3 Fixtures & Results</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 3 Results</h2>
     <div class="fixture-grid" id="matchday3-fixtures" aria-label="Matchday 3 fixtures">
       <!-- Fixtures will be inserted here by JavaScript -->
-    </div>
-  </div>
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <div class="pot-info">
-      <h3 class="text-xl font-bold mb-2 text-yellow-300">Tournament Structure</h3>
-      <p class="text-white mb-4">
-        There are 8 pots, each containing 4 teams. Teams in each pot face one another in a league phase to create a league table. After Matchday 3, the top 8 teams in the overall league standings qualify directly to the Round of 16. Teams ranked 9 to 24 enter knockout playoffs, with winners earning the remaining Round of 16 spots. Teams ranked 25 to 32 are eliminated from the tournament.
-      </p>
-      <div class="pot-players">
-        <div class="pot-column">
-          <h4 class="font-bold text-yellow-300">Pot 1</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Gitran</li>
-            <li>Raydelo</li>
-            <li>Saif</li>
-            <li>Trumperbee</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 2</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Magggs</li>
-            <li>Lanther</li>
-            <li>Griffo</li>
-            <li>Aniro</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 3</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Ziggy</li>
-            <li>Young_furry</li>
-            <li>Faisal</li>
-            <li>Drunken Master</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 4</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Mufasa2fly</li>
-            <li>Steve</li>
-            <li>Abishai</li>
-            <li>Yotti</li>
-          </ol>
-        </div>
-        <div class="pot-column">
-          <h4 class="font-bold text-yellow-300">Pot 5</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Immortaljester</li>
-            <li>Turna</li>
-            <li>Felixmorara</li>
-            <li>Kenton</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 6</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Itsotieno020</li>
-            <li>Mwai</li>
-            <li>Boogie</li>
-            <li>Stafyodi</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 7</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Crmax70</li>
-            <li>Storm</li>
-            <li>Atraz</li>
-            <li>AYUMAH</li>
-          </ol>
-          <h4 class="font-bold text-yellow-300 mt-4">Pot 8</h4>
-          <ol class="list-decimal pl-5 text-white">
-            <li>Dukeh</li>
-            <li>Homeywonder</li>
-            <li>Blitzfury</li>
-            <li>Braizen_10</li>
-          </ol>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -315,6 +280,26 @@
         <!-- Standings rows will be inserted here by JavaScript -->
       </tbody>
     </table>
+    <div class="mt-4 text-center">
+      <p class="text-green-400 font-bold">Top 8: Direct qualification to Round of 16</p>
+      <p class="text-yellow-400 font-bold">9-24: Playoff qualification</p>
+      <p class="text-red-400 font-bold">25-32: Eliminated from tournament</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-green-400 text-center">Playoff Fixtures</h2>
+    <div class="playoff-grid" id="playoff-fixtures">
+      <!-- Playoff fixtures will be inserted here by JavaScript -->
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-red-400 text-center">Eliminated Teams</h2>
+    <div class="text-center mb-4">These warriors fought hard but have been knocked out of the tournament:</div>
+    <div class="eliminated-teams" id="eliminated-teams">
+      <!-- Eliminated teams will be inserted here by JavaScript -->
+    </div>
   </div>
 
   <div class="footer-text animate__animated animate__fadeIn">
@@ -322,6 +307,7 @@
     <p>Contact via <a href="https://wa.me/254790231190" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
     <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>
   </div>
+
 <script>
     // Player data with phone numbers
     const players = {
@@ -359,7 +345,7 @@
       "Ziggy": "+254113359005"
     };
 
-    // Matchday 3 fixtures with ALL results (completed and upcoming)
+    // Matchday 3 fixtures with ALL results
     const matchday3Fixtures = [
       ["Crmax70", "AYUMAH", {score1:4, score2:2}],
       ["Dukeh", "Braizen_10", {score1:4, score2:2}],
@@ -373,11 +359,10 @@
       ["Steve", "Abishai", {score1:2, score2:0}],
       ["Aniro", "Magggs", {score1:6, score2:2}],
       ["Homeywonder", "Blitzfury", {score1:0, score2:0}],
-      // Remaining fixtures (no results yet)
-      ["Gitran", "Saif"],
-      ["Young_furry", "Faisal"],
-      ["Mufasa2fly", "Yotti"],
-      ["Mwai", "Boogie"]
+      ["Faisal", "Young_furry", {score1:7, score2:2}],
+      ["Gitran", "Saif", {score1:4, score2:2}],
+      ["Mufasa2fly", "Yotti", {score1:0, score2:0}],
+      ["Mwai", "Boogie", {score1:0, score2:0}]
     ];
 
     // Combined array of all completed matches from all matchdays
@@ -418,7 +403,7 @@
       ["Steve", "Yotti", {score1:0, score2:0}],
       ["Drunken Master", "Young_furry", {score1:1, score2:1}],
       
-      // Matchday 3 Results (only completed matches)
+      // Matchday 3 Results
       ["Crmax70", "AYUMAH", {score1:4, score2:2}],
       ["Dukeh", "Braizen_10", {score1:4, score2:2}],
       ["Itsotieno020", "Stafyodi", {score1:3, score2:2}],
@@ -430,11 +415,16 @@
       ["Lanther", "Griffo", {score1:5, score2:0}],
       ["Steve", "Abishai", {score1:2, score2:0}],
       ["Aniro", "Magggs", {score1:6, score2:2}],
-      ["Homeywonder", "Blitzfury", {score1:0, score2:0}]
+      ["Homeywonder", "Blitzfury", {score1:0, score2:0}],
+      ["Faisal", "Young_furry", {score1:7, score2:2}],
+      ["Gitran", "Saif", {score1:4, score2:2}],
+      ["Mufasa2fly", "Yotti", {score1:0, score2:0}],
+      ["Mwai", "Boogie", {score1:0, score2:0}]
     ];
 
     // Initialize standings
     let standings = {};
+    let sortedStandings = [];
 
     // Function to completely rebuild standings from all matches
     function rebuildStandings() {
@@ -482,6 +472,14 @@
           }
         }
       });
+
+      // Sort standings
+      sortedStandings = Object.values(standings).sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        if (b.gd !== a.gd) return b.gd - a.gd;
+        if (b.gf !== a.gf) return b.gf - a.gf;
+        return a.team.localeCompare(b.team);
+      });
     }
 
     // Function to render Matchday 3 fixtures
@@ -497,12 +495,14 @@
         const team1Link = document.createElement('a');
         team1Link.className = 'player-link';
         team1Link.textContent = team1;
-        team1Link.href = `tel:${players[team1]}`;
+        team1Link.href = `https://wa.me/${players[team1]}`;
+        team1Link.target = "_blank";
         
         const team2Link = document.createElement('a');
         team2Link.className = 'player-link';
         team2Link.textContent = team2;
-        team2Link.href = `tel:${players[team2]}`;
+        team2Link.href = `https://wa.me/${players[team2]}`;
+        team2Link.target = "_blank";
         
         const vsSeparator = document.createElement('div');
         
@@ -527,19 +527,9 @@
       const standingsBody = document.getElementById('standings-body');
       if (!standingsBody) return;
       
-      // Convert to array and sort
-      const standingsArray = Object.values(standings);
-      
-      standingsArray.sort((a, b) => {
-        if (b.pts !== a.pts) return b.pts - a.pts;
-        if (b.gd !== a.gd) return b.gd - a.gd;
-        if (b.gf !== a.gf) return b.gf - a.gf;
-        return a.team.localeCompare(b.team);
-      });
-      
       standingsBody.innerHTML = '';
       
-      standingsArray.forEach((team, index) => {
+      sortedStandings.forEach((team, index) => {
         const row = document.createElement('tr');
         
         // Apply qualification classes
@@ -553,7 +543,7 @@
         
         row.innerHTML = `
           <td>${index + 1}</td>
-          <td class="team-link" onclick="window.location.href='tel:${players[team.team]}'">${team.team}</td>
+          <td><a href="https://wa.me/${players[team.team]}" target="_blank" class="team-link">${team.team}</a></td>
           <td>${team.pld}</td>
           <td>${team.w}</td>
           <td>${team.d}</td>
@@ -568,20 +558,70 @@
       });
     }
 
+    // Function to render playoff fixtures
+    function renderPlayoffFixtures() {
+      const playoffGrid = document.getElementById('playoff-fixtures');
+      if (!playoffGrid) return;
+      
+      playoffGrid.innerHTML = '';
+      
+      // Playoff matchups: 9v24, 10v23, etc.
+      for (let i = 0; i < 8; i++) {
+        const higherSeed = sortedStandings[8 + i]; // 9th place (index 8)
+        const lowerSeed = sortedStandings[23 - i]; // 24th place (index 23)
+        
+        const higherSeedLink = document.createElement('a');
+        higherSeedLink.className = 'player-link';
+        higherSeedLink.textContent = higherSeed.team;
+        higherSeedLink.href = `https://wa.me/${players[higherSeed.team]}`;
+        higherSeedLink.target = "_blank";
+        
+        const lowerSeedLink = document.createElement('a');
+        lowerSeedLink.className = 'player-link';
+        lowerSeedLink.textContent = lowerSeed.team;
+        lowerSeedLink.href = `https://wa.me/${players[lowerSeed.team]}`;
+        lowerSeedLink.target = "_blank";
+        
+        const vsSeparator = document.createElement('div');
+        vsSeparator.className = 'vs-separator';
+        vsSeparator.textContent = 'vs';
+        
+        playoffGrid.appendChild(higherSeedLink);
+        playoffGrid.appendChild(vsSeparator);
+        playoffGrid.appendChild(lowerSeedLink);
+      }
+    }
+
+    // Function to render eliminated teams
+    function renderEliminatedTeams() {
+      const eliminatedContainer = document.getElementById('eliminated-teams');
+      if (!eliminatedContainer) return;
+      
+      eliminatedContainer.innerHTML = '';
+      
+      // Teams ranked 25-32 (indexes 24-31)
+      for (let i = 24; i < 32; i++) {
+        if (i >= sortedStandings.length) break;
+        
+        const team = sortedStandings[i];
+        const teamEl = document.createElement('div');
+        teamEl.className = 'eliminated-team';
+        teamEl.innerHTML = `<a href="https://wa.me/${players[team.team]}" target="_blank" style="color: inherit;">${team.team}</a>`;
+        eliminatedContainer.appendChild(teamEl);
+      }
+    }
+
     // Function to update everything
     function updateAll() {
       rebuildStandings();
       renderMatchday3Fixtures();
       renderStandings();
+      renderPlayoffFixtures();
+      renderEliminatedTeams();
     }
 
     // Initialize the page
     document.addEventListener('DOMContentLoaded', updateAll);
-
-    // To add new results later, you would:
-    // 1. Add to matchday3Fixtures array
-    // 2. Add to allCompletedMatches array
-    // 3. Call updateAll()
 </script>
 </body>
 </html>
