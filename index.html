@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Struggle for the Fittest eFootball League</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />
@@ -17,8 +17,8 @@
     .section-container {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 1rem;
-      padding: 2rem 2.5rem;
-      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
       max-width: 900px;
       margin-left: auto;
@@ -32,16 +32,16 @@
     .fixture-grid {
       display: grid;
       grid-template-columns: 1fr 0.5fr 1fr;
-      gap: 1rem;
+      gap: 0.8rem;
       max-width: 700px;
       margin: 0 auto;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #ffd43b;
     }
     .player-link {
       background: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem;
       border-radius: 0.5rem;
       text-align: center;
       color: #ffd43b;
@@ -51,6 +51,7 @@
       cursor: pointer;
       text-decoration: none;
       display: block;
+      word-break: break-word;
     }
     .player-link:hover {
       background: rgba(255, 255, 255, 0.25);
@@ -65,7 +66,7 @@
     }
     .notice {
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #f87171;
       margin-bottom: 1.5rem;
@@ -73,7 +74,7 @@
     .info-text {
       max-width: 700px;
       margin: 0 auto 2rem auto;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #a5b4fc;
       font-weight: 600;
       text-align: center;
@@ -130,10 +131,11 @@
       overflow: hidden;
       font-weight: 600;
       font-family: 'Roboto Mono', monospace;
+      font-size: 0.9rem;
     }
     th, td {
       border: 1px solid #facc15;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem;
       text-align: center;
     }
     thead {
@@ -167,45 +169,43 @@
     .team-link:hover {
       color: #fff;
     }
-    .tactical-analysis {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin-top: 2rem;
-      border-left: 4px solid #facc15;
-    }
-    .tactical-analysis h3 {
-      color: #facc15;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    .analysis-section {
-      margin-bottom: 1.5rem;
-    }
-    .analysis-section h4 {
-      color: #34d399;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .prediction-table {
-      width: 100%;
-      margin-top: 1rem;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    .prediction-table th {
-      background-color: #b45309;
-      padding: 0.5rem;
-    }
-    .prediction-table td {
-      padding: 0.5rem;
-      border: 1px solid #facc15;
+
+    @media (max-width: 640px) {
+      .section-container {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .fixture-grid {
+        grid-template-columns: 1fr 0.3fr 1fr;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .player-link {
+        padding: 0.3rem;
+        font-size: 0.85rem;
+      }
+      .pot-players {
+        grid-template-columns: 1fr;
+      }
+      table {
+        font-size: 0.8rem;
+      }
+      th, td {
+        padding: 0.3rem;
+      }
     }
   </style>
 </head>
-<body class="px-6 py-12">
+<body class="px-4 py-8 sm:px-6 sm:py-12">
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInDown">
-    <h1 class="text-5xl font-extrabold mb-4 text-yellow-400 text-center animate__animated animate__zoomIn">Struggle for the Fittest</h1>
-    <p class="text-xl text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-yellow-400 text-center animate__animated animate__zoomIn">Struggle for the Fittest</h1>
+    <p class="text-lg sm:text-xl text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">
       ⚽ The ultimate eFootball knockout battle! 32 teams. 1 Champion. Glory Awaits!
     </p>
     <p class="notice animate__animated animate__fadeInRight">
@@ -217,11 +217,12 @@
   </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 3 Fixtures</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-blue-400 text-center">Matchday 3 Fixtures & Results</h2>
     <div class="fixture-grid" id="matchday3-fixtures" aria-label="Matchday 3 fixtures">
       <!-- Fixtures will be inserted here by JavaScript -->
     </div>
   </div>
+
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
     <div class="pot-info">
       <h3 class="text-xl font-bold mb-2 text-yellow-300">Tournament Structure</h3>
@@ -290,9 +291,11 @@
           </ol>
         </div>
       </div>
+    </div>
+  </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="text-3xl font-bold mb-6 text-yellow-400 text-center">League Standings</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400 text-center">League Standings</h2>
     <table aria-label="League standings table">
       <thead>
         <tr>
@@ -312,104 +315,6 @@
         <!-- Standings rows will be inserted here by JavaScript -->
       </tbody>
     </table>
-
-    <div class="tactical-analysis">
-      <h3>Tactical Analysis of Key Results</h3>
-      
-      <div class="analysis-section">
-        <h4>1. Dominant Performers (Contenders for Top 8)</h4>
-        <p><strong>Trumperbee (8-3 vs Gitran):</strong><br>
-        <em>Analysis:</em> Overwhelming attacking display. Scored 14 goals in 2 matches (6-0, 8-3).<br>
-        <em>Prediction:</em> <strong>Locked for top 8</strong>. Potential finalist if defense tightens.</p>
-        
-        <p><strong>Faisal (4-0, 4-1):</strong><br>
-        <em>Analysis:</em> Clinical finishing + clean sheets. Controlled both games tactically.<br>
-        <em>Prediction:</em> <strong>Top 8 certainty</strong>. Dark horse for the title.</p>
-        
-        <p><strong>Aniro (8-0, 3-1):</strong><br>
-        <em>Analysis:</em> Brutal efficiency (11 goals in 2 games). Griffo's 0-0 vs Magggs suggests Pot 2 is theirs to lose.<br>
-        <em>Prediction:</em> <strong>Will win Pot 2</strong>. Semifinal potential.</p>
-        
-        <p><strong>Felixmorara (1-0, 2-1):</strong><br>
-        <em>Analysis:</em> Grinding out results. Kenton (3-2) is their only Pot 5 threat.<br>
-        <em>Prediction:</em> <strong>Pot 5 winner</strong>. Could upset in playoffs.</p>
-        
-        <p><strong>Dukeh (1-0, 2-1) & Braizen_10 (0-1, 3-1):</strong><br>
-        <em>Analysis:</em> Pot 8's strongest. Dukeh's defense vs Braizen's attack (3 goals vs Homeywonder).<br>
-        <em>Prediction:</em> <strong>Both could advance</strong> (Dukeh top 8, Braizen playoffs).</p>
-      </div>
-      
-      <div class="analysis-section">
-        <h4>2. Underperformers (Risk of Elimination)</h4>
-        <p><strong>Gitran (0-1, 3-8):</strong><br>
-        <em>Analysis:</em> Conceded 9 goals in 2 games. Defensive chaos.<br>
-        <em>Prediction:</em> <strong>Likely eliminated</strong> (Pot 1's weakest).</p>
-        
-        <p><strong>AYUMAH (0-7, 0-6):</strong><br>
-        <em>Analysis:</em> 13 goals conceded. No tactical structure.<br>
-        <em>Prediction:</em> <strong>Certain elimination</strong> (Ranked 31/32).</p>
-        
-        <p><strong>Blitzfury (0-1, 1-2):</strong><br>
-        <em>Analysis:</em> Failed to score from open play.<br>
-        <em>Prediction:</em> <strong>25-32 elimination</strong>.</p>
-      </div>
-      
-      <div class="analysis-section">
-        <h4>3. Surprise Packages</h4>
-        <p><strong>Itsotieno020 (1-2, 1-0):</strong><br>
-        <em>Analysis:</em> Resilient vs Mwai/Boogie.<br>
-        <em>Prediction:</em> <strong>Playoff contender</strong> (Pot 6 runner-up).</p>
-        
-        <p><strong>Storm (3-3, 6-0):</strong><br>
-        <em>Analysis:</em> Went from draw to demolition.<br>
-        <em>Prediction:</em> <strong>Pot 7 winner</strong> if they beat Atraz.</p>
-      </div>
-      
-      <table class="prediction-table">
-        <thead>
-          <tr>
-            <th colspan="3">📊 Predicted League Standings After Matchday 3</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Top 8 (Direct Qualification)</strong></td>
-            <td colspan="2">
-              1. Trumperbee (Pot 1)<br>
-              2. Faisal (Pot 3)<br>
-              3. Aniro (Pot 2)<br>
-              4. Felixmorara (Pot 5)<br>
-              5. Dukeh (Pot 8)<br>
-              6. Braizen_10 (Pot 8)<br>
-              7. Storm (Pot 7)<br>
-              8. Kenton (Pot 5)
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Playoff Contenders (9th-24th)</strong></td>
-            <td colspan="2">
-              Saif, Mufasa2fly, Magggs, Griffo, Drunken Master, Immortaljester, Itsotieno020, Crmax70
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Eliminated (25th-32nd)</strong></td>
-            <td colspan="2">
-              Gitran, AYUMAH, Blitzfury, Homeywonder, Lanther, Turna, Boogie, Stafyodi
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="analysis-section">
-        <h4>⚡ Key Takeaways</h4>
-        <ul>
-          <li><strong>Trumperbee vs Faisal</strong> is the <strong>projected final</strong> (both dominating their pots).</li>
-          <li><strong>Pot 8 (Dukeh/Braizen)</strong> is the most competitive.</li>
-          <li><strong>Defensive teams</strong> (e.g., Felix Morara, 1-0 win and 2-1 win) could upset in playoffs.</li>
-          <li><strong>Avoid Relegation Battle:</strong> Teams like Griffo (0-0 vs Magggs) must win MD3 to survive.</li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   <div class="footer-text animate__animated animate__fadeIn">
@@ -417,13 +322,11 @@
     <p>Contact via <a href="https://wa.me/254790231190" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
     <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>
   </div>
-
-  <script>
+<script>
     // Player data with phone numbers
     const players = {
       "Trumperbee": "+254790231190",
       "Saif": "+254758631606",
-      "Mufasa": "+254715996329",
       "Young_furry": "+254112449057",
       "Magggs": "+254115922639",
       "Lanther": "+254718167359",
@@ -456,48 +359,30 @@
       "Ziggy": "+254113359005"
     };
 
-    // Matchday 3 fixtures
+    // Matchday 3 fixtures with results (completed matches first)
     const matchday3Fixtures = [
+      ["Crmax70", "AYUMAH", {score1:4, score2:2}],
+      ["Dukeh", "Braizen_10", {score1:4, score2:2}],
+      ["Itsotieno020", "Stafyodi", {score1:3, score2:2}],
+      ["Kenton", "Immortaljester", {score1:2, score2:1}],
+      ["Felixmorara", "Turna", {score1:4, score2:0}],
+      ["Trumperbee", "Raydelo", {score1:3, score2:0}],
+      ["Drunken Master", "Ziggy", {score1:4, score2:3}],
+      ["Atraz", "Storm", {score1:3, score2:1}],
+      ["Lanther", "Griffo", {score1:5, score2:0}],
+      // Remaining fixtures (no results yet)
       ["Gitran", "Saif"],
-      ["Raydelo", "Trumperbee"],
       ["Magggs", "Aniro"],
-      ["Lanther", "Griffo"],
-      ["Ziggy", "Drunken Master"],
       ["Young_furry", "Faisal"],
       ["Mufasa2fly", "Yotti"],
       ["Steve", "Abishai"],
-      ["Immortaljester", "Kenton"],
-      ["Turna", "Felixmorara"],
-      ["Itsotieno020", "Stafyodi"],
       ["Mwai", "Boogie"],
-      ["Crmax70", "AYUMAH"],
-      ["Storm", "Atraz"],
-      ["Dukeh", "Braizen_10"],
       ["Homeywonder", "Blitzfury"]
     ];
 
-    // Matchday 2 results
-    const matchday2Results = [
-      ["Crmax70", "Atraz", {score1:3, score2:2}],
-      ["Braizen_10", "Homeywonder", {score1:3, score2:1}],
-      ["Trumperbee", "Gitran", {score1:8, score2:3}],
-      ["Felixmorara", "Immortaljester", {score1:2, score2:1}],
-      ["Faisal", "Ziggy", {score1:4, score2:1}],
-      ["Aniro", "Lanther", {score1:3, score2:1}],
-      ["Dukeh", "Blitzfury", {score1:2, score2:1}],
-      ["Kenton", "Turna", {score1:3, score2:2}],
-      ["Itsotieno020", "Boogie", {score1:1, score2:0}],
-      ["Storm", "AYUMAH", {score1:6, score2:0}],
-      ["Magggs", "Griffo", {score1:3, score2:0}],
-      ["Saif", "Raydelo", {score1:3, score2:0}],
-      ["Mwai", "Stafyodi", {score1:3, score2:0}],
-      ["Abishai", "Mufasa2fly", {score1:0, score2:1}],
-      ["Steve", "Yotti", {score1:0, score2:0}],
-      ["Drunken Master", "Young_furry", {score1:1, score2:1}]
-    ];
-
-    // Matchday 1 results
-    const matchday1Results = [
+    // All match results combined (for standings)
+    const allMatchResults = [
+      // Matchday 1 Results
       ["Atraz", "AYUMAH", {score1:7, score2:0}],
       ["Lanther", "Magggs", {score1:2, score2:4}],
       ["Ziggy", "Young_furry", {score1:5, score2:4}],
@@ -513,7 +398,36 @@
       ["Dukeh", "Homeywonder", {score1:1, score2:0}],
       ["Blitzfury", "Braizen_10", {score1:0, score2:1}],
       ["Mwai", "Itsotieno020", {score1:1, score2:2}],
-      ["Griffo", "Aniro", {score1:0, score2:8}]
+      ["Griffo", "Aniro", {score1:0, score2:8}],
+      
+      // Matchday 2 Results
+      ["Crmax70", "Atraz", {score1:3, score2:2}],
+      ["Braizen_10", "Homeywonder", {score1:3, score2:1}],
+      ["Trumperbee", "Gitran", {score1:8, score2:3}],
+      ["Felixmorara", "Immortaljester", {score1:2, score2:1}],
+      ["Faisal", "Ziggy", {score1:4, score2:1}],
+      ["Aniro", "Lanther", {score1:3, score2:1}],
+      ["Dukeh", "Blitzfury", {score1:2, score2:1}],
+      ["Kenton", "Turna", {score1:3, score2:2}],
+      ["Itsotieno020", "Boogie", {score1:1, score2:0}],
+      ["Storm", "AYUMAH", {score1:6, score2:0}],
+      ["Magggs", "Griffo", {score1:3, score2:0}],
+      ["Saif", "Raydelo", {score1:3, score2:0}],
+      ["Mwai", "Stafyodi", {score1:3, score2:0}],
+      ["Abishai", "Mufasa2fly", {score1:0, score2:1}],
+      ["Steve", "Yotti", {score1:0, score2:0}],
+      ["Drunken Master", "Young_furry", {score1:1, score2:1}],
+      
+      // Matchday 3 Results (completed matches only)
+      ["Crmax70", "AYUMAH", {score1:4, score2:2}],
+      ["Dukeh", "Braizen_10", {score1:4, score2:2}],
+      ["Itsotieno020", "Stafyodi", {score1:3, score2:2}],
+      ["Kenton", "Immortaljester", {score1:2, score2:1}],
+      ["Felixmorara", "Turna", {score1:4, score2:0}],
+      ["Trumperbee", "Raydelo", {score1:3, score2:0}],
+      ["Drunken Master", "Ziggy", {score1:4, score2:3}],
+      ["Atraz", "Storm", {score1:3, score2:1}],
+      ["Lanther", "Griffo", {score1:5, score2:0}]
     ];
 
     // Initialize standings
@@ -532,114 +446,99 @@
       };
     });
 
-    // Process match results to update standings
-    function processMatchResults(matches) {
-      matches.forEach(match => {
-        const [team1, team2, result] = match;
-        if (!standings[team1] || !standings[team2]) {
-          console.error("Missing team in standings:", team1, team2);
-          return;
-        }
-        
+    // Process all match results for standings
+    allMatchResults.forEach(match => {
+      const [team1, team2, result] = match;
+      
+      if (result && typeof result.score1 === 'number' && typeof result.score2 === 'number') {
+        // Update team1 stats
         standings[team1].pld++;
-        standings[team2].pld++;
-        
         standings[team1].gf += result.score1;
         standings[team1].ga += result.score2;
+        standings[team1].gd = standings[team1].gf - standings[team1].ga;
+        
+        // Update team2 stats
+        standings[team2].pld++;
         standings[team2].gf += result.score2;
         standings[team2].ga += result.score1;
-        
-        standings[team1].gd = standings[team1].gf - standings[team1].ga;
         standings[team2].gd = standings[team2].gf - standings[team2].ga;
         
+        // Update points
         if (result.score1 > result.score2) {
           standings[team1].w++;
-          standings[team2].l++;
           standings[team1].pts += 3;
+          standings[team2].l++;
         } else if (result.score1 < result.score2) {
           standings[team2].w++;
-          standings[team1].l++;
           standings[team2].pts += 3;
+          standings[team1].l++;
         } else {
           standings[team1].d++;
           standings[team2].d++;
           standings[team1].pts += 1;
           standings[team2].pts += 1;
         }
-      });
-    }
+      }
+    });
 
-    // Process all match results
-    processMatchResults(matchday1Results);
-    processMatchResults(matchday2Results);
-
-    // Function to render matchday 3 fixtures
+    // Function to render Matchday 3 fixtures
     function renderMatchday3Fixtures() {
       const fixtureGrid = document.getElementById('matchday3-fixtures');
-      if (!fixtureGrid) {
-        console.error("Fixture grid element not found");
-        return;
-      }
+      if (!fixtureGrid) return;
+      
       fixtureGrid.innerHTML = '';
       
-      matchday3Fixtures.forEach(fixture => {
-        const [player1, player2] = fixture;
+      matchday3Fixtures.forEach(match => {
+        const [team1, team2, result] = match;
         
-        if (!players[player1] || !players[player2]) {
-          console.error("Missing player data:", player1, player2);
-          return;
+        const team1Link = document.createElement('a');
+        team1Link.className = 'player-link';
+        team1Link.textContent = team1;
+        team1Link.href = `tel:${players[team1]}`;
+        
+        const team2Link = document.createElement('a');
+        team2Link.className = 'player-link';
+        team2Link.textContent = team2;
+        team2Link.href = `tel:${players[team2]}`;
+        
+        const vsSeparator = document.createElement('div');
+        
+        if (result && typeof result.score1 === 'number' && typeof result.score2 === 'number') {
+          // Show result
+          vsSeparator.className = 'match-result';
+          vsSeparator.textContent = `${result.score1}-${result.score2}`;
+        } else {
+          // Show vs for upcoming matches
+          vsSeparator.className = 'vs-separator';
+          vsSeparator.textContent = 'vs';
         }
         
-        // Player 1 link
-        const player1Link = document.createElement('a');
-        player1Link.href = `https://wa.me/${players[player1].replace(/\D/g, '')}`;
-        player1Link.target = '_blank';
-        player1Link.rel = 'noopener noreferrer';
-        player1Link.className = 'player-link';
-        player1Link.textContent = player1;
-        
-        // VS separator
-        const vsSeparator = document.createElement('div');
-        vsSeparator.className = 'vs-separator';
-        vsSeparator.textContent = 'vs';
-        
-        // Player 2 link
-        const player2Link = document.createElement('a');
-        player2Link.href = `https://wa.me/${players[player2].replace(/\D/g, '')}`;
-        player2Link.target = '_blank';
-        player2Link.rel = 'noopener noreferrer';
-        player2Link.className = 'player-link';
-        player2Link.textContent = player2;
-        
-        // Append to grid
-        fixtureGrid.appendChild(player1Link);
+        fixtureGrid.appendChild(team1Link);
         fixtureGrid.appendChild(vsSeparator);
-        fixtureGrid.appendChild(player2Link);
+        fixtureGrid.appendChild(team2Link);
       });
     }
 
     // Function to render standings table
     function renderStandings() {
       const standingsBody = document.getElementById('standings-body');
-      if (!standingsBody) {
-        console.error("Standings body element not found");
-        return;
-      }
-      standingsBody.innerHTML = '';
+      if (!standingsBody) return;
       
-      // Convert standings to array and sort
-      const sortedStandings = Object.values(standings).sort((a, b) => {
+      // Convert to array and sort
+      const standingsArray = Object.values(standings);
+      
+      standingsArray.sort((a, b) => {
         if (b.pts !== a.pts) return b.pts - a.pts;
         if (b.gd !== a.gd) return b.gd - a.gd;
         if (b.gf !== a.gf) return b.gf - a.gf;
         return a.team.localeCompare(b.team);
       });
       
-      // Create table rows
-      sortedStandings.forEach((team, index) => {
+      standingsBody.innerHTML = '';
+      
+      standingsArray.forEach((team, index) => {
         const row = document.createElement('tr');
         
-        // Determine row class based on position
         if (index < 8) {
           row.className = 'direct-qualifier';
         } else if (index < 24) {
@@ -648,29 +547,16 @@
           row.className = 'eliminated';
         }
         
-        // Team name with WhatsApp link
-        const teamCell = document.createElement('td');
-        const teamLink = document.createElement('a');
-        teamLink.href = `https://wa.me/${players[team.team].replace(/\D/g, '')}`;
-        teamLink.target = '_blank';
-        teamLink.rel = 'noopener noreferrer';
-        teamLink.className = 'team-link';
-        teamLink.textContent = team.team;
-        teamCell.appendChild(teamLink);
-        
-        // Add cells to row
         row.innerHTML = `
           <td>${index + 1}</td>
-        `;
-        row.appendChild(teamCell);
-        row.innerHTML += `
+          <td class="team-link" onclick="window.location.href='tel:${players[team.team]}'">${team.team}</td>
           <td>${team.pld}</td>
           <td>${team.w}</td>
           <td>${team.d}</td>
           <td>${team.l}</td>
           <td>${team.gf}</td>
           <td>${team.ga}</td>
-          <td>${team.gd >= 0 ? '+' + team.gd : team.gd}</td>
+          <td>${team.gd}</td>
           <td>${team.pts}</td>
         `;
         
@@ -678,12 +564,11 @@
       });
     }
 
-    // Initialize the page when loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log("DOM fully loaded");
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
       renderMatchday3Fixtures();
       renderStandings();
     });
-  </script>
+</script>
 </body>
 </html>
