@@ -27,210 +27,306 @@
     h1, h2, h3 {  
       font-family: 'Roboto Mono', monospace;  
       letter-spacing: 0.05em;  
-    }  .fixture-grid {  
-  display: grid;  
-  grid-template-columns: 1fr 0.5fr 1fr;  
-  gap: 0.8rem;  
-  max-width: 700px;  
-  margin: 0 auto;  
-  font-weight: 600;  
-  font-size: 1rem;  
-  color: #ffd43b;  
-}  
-.player-link {  
-  background: rgba(255, 255, 255, 0.1);  
-  padding: 0.5rem;  
-  border-radius: 0.5rem;  
-  text-align: center;  
-  color: #ffd43b;  
-  box-shadow: 0 2px 6px rgba(255, 212, 59, 0.4);  
-  user-select: none;  
-  transition: background-color 0.3s ease, color 0.3s ease;  
-  cursor: pointer;  
-  text-decoration: none;  
-  display: block;  
-  word-break: break-word;  
-}  
-.player-link:hover {  
-  background: rgba(255, 255, 255, 0.25);  
-  color: #fff;  
-}  
-.vs-separator {  
-  text-align: center;  
-  color: #facc15;  
-  font-weight: 700;  
-  user-select: none;  
-  align-self: center;  
-}  
-.notice {  
-  text-align: center;  
-  font-size: 1.1rem;  
-  font-weight: 700;  
-  color: #f87171;  
-  margin-bottom: 1.5rem;  
-}  
-.info-text {  
-  max-width: 700px;  
-  margin: 0 auto 2rem auto;  
-  font-size: 1rem;  
-  color: #a5b4fc;  
-  font-weight: 600;  
-  text-align: center;  
-}  
-.footer-text {  
-  text-align: center;  
-  font-size: 0.9rem;  
-  color: #9ca3af;  
-  margin-top: 3rem;  
-}  
-.footer-text a {  
-  color: #34d399;  
-  text-decoration: underline;  
-}  
-.pot-info {  
-  background: rgba(255, 255, 255, 0.1);  
-  padding: 1rem;  
-  border-radius: 0.5rem;  
-  margin: 1.5rem auto;  
-  max-width: 700px;  
-  text-align: center;  
-  border: 1px solid #facc15;  
-}  
-.pot-players {  
-  display: grid;  
-  grid-template-columns: repeat(2, 1fr);  
-  gap: 1rem;  
-  margin-top: 1rem;  
-}  
-.pot-column {  
-  background: rgba(255, 255, 255, 0.05);  
-  padding: 1rem;  
-  border-radius: 0.5rem;  
-  text-align: left;  
-}  
-.pot-column h4 {  
-  margin-bottom: 0.5rem;  
-}  
-.match-result {  
-  text-align: center;  
-  font-weight: 700;  
-  color: #34d399;  
-  user-select: none;  
-  align-self: center;  
-}  
-table {  
-  border-collapse: collapse;  
-  width: 100%;  
-  max-width: 900px;  
-  margin: 0 auto;  
-  color: #f0f0f0;  
-  background: rgba(0,0,0,0.6);  
-  border-radius: 0.5rem;  
-  overflow: hidden;  
-  font-weight: 600;  
-  font-family: 'Roboto Mono', monospace;  
-  font-size: 0.9rem;  
-}  
-th, td {  
-  border: 1px solid #facc15;  
-  padding: 0.5rem;  
-  text-align: center;  
-}  
-thead {  
-  background-color: #b45309;  
-  color: #fff;  
-}  
-tbody tr:nth-child(even) {  
-  background-color: rgba(255, 255, 255, 0.1);  
-}  
-/* Color coding for standings */  
-.direct-qualifier {  
-  background-color: #2563eb;  
-  color: #e0e7ff;  
-  font-weight: 700;  
-}  
-.playoff-qualifier {  
-  background-color: #2563eb;  
-  color: #e0e7ff;  
-  font-weight: 700;  
-}  
-.eliminated {  
-  background-color: #2563eb;  
-  color: #fef2f2;  
-  font-weight: 700;  
-}  
-.team-link {  
-  color: #ffd43b;  
-  cursor: pointer;  
-  text-decoration: underline;  
-}  
-.team-link:hover {  
-  color: #fff;  
-}  
-.league-completed {  
-  background: linear-gradient(135deg, #4a044e, #190061);  
-  padding: 1rem;  
-  border-radius: 0.5rem;  
-  text-align: center;  
-  margin: 1rem auto;  
-  max-width: 700px;  
-  border: 2px solid #facc15;  
-  font-weight: 700;  
-  font-size: 1.2rem;  
-}  
-.playoff-grid {  
-  display: grid;  
-  grid-template-columns: 1fr 0.3fr 1fr;  
-  gap: 0.8rem;  
-  max-width: 700px;  
-  margin: 0 auto;  
-  font-weight: 600;  
-  font-size: 1rem;  
-}  
-.eliminated-teams {  
-  display: flex;  
-  flex-wrap: wrap;  
-  justify-content: center;  
-  gap: 0.5rem;  
-  margin-top: 1rem;  
-}  
-.eliminated-team {  
-  background: rgba(239, 68, 68, 0.2);  
-  padding: 0.3rem 0.6rem;  
-  border-radius: 0.5rem;  
-  border: 1px solid #ef4444;  
-}  
+    }  
+    .fixture-grid {  
+      display: grid;  
+      grid-template-columns: 1fr 0.5fr 1fr;  
+      gap: 0.8rem;  
+      max-width: 700px;  
+      margin: 0 auto;  
+      font-weight: 600;  
+      font-size: 1rem;  
+      color: #ffd43b;  
+    }  
+    .player-link {  
+      background: rgba(255, 255, 255, 0.1);  
+      padding: 0.5rem;  
+      border-radius: 0.5rem;  
+      text-align: center;  
+      color: #ffd43b;  
+      box-shadow: 0 2px 6px rgba(255, 212, 59, 0.4);  
+      user-select: none;  
+      transition: background-color 0.3s ease, color 0.3s ease;  
+      cursor: pointer;  
+      text-decoration: none;  
+      display: block;  
+      word-break: break-word;  
+    }  
+    .player-link:hover {  
+      background: rgba(255, 255, 255, 0.25);  
+      color: #fff;  
+    }  
+    .vs-separator {  
+      text-align: center;  
+      color: #facc15;  
+      font-weight: 700;  
+      user-select: none;  
+      align-self: center;  
+    }  
+    .notice {  
+      text-align: center;  
+      font-size: 1.1rem;  
+      font-weight: 700;  
+      color: #f87171;  
+      margin-bottom: 1.5rem;  
+    }  
+    .info-text {  
+      max-width: 700px;  
+      margin: 0 auto 2rem auto;  
+      font-size: 1rem;  
+      color: #a5b4fc;  
+      font-weight: 600;  
+      text-align: center;  
+    }  
+    .footer-text {  
+      text-align: center;  
+      font-size: 0.9rem;  
+      color: #9ca3af;  
+      margin-top: 3rem;  
+    }  
+    .footer-text a {  
+      color: #34d399;  
+      text-decoration: underline;  
+    }  
+    .pot-info {  
+      background: rgba(255, 255, 255, 0.1);  
+      padding: 1rem;  
+      border-radius: 0.5rem;  
+      margin: 1.5rem auto;  
+      max-width: 700px;  
+      text-align: center;  
+      border: 1px solid #facc15;  
+    }  
+    .pot-players {  
+      display: grid;  
+      grid-template-columns: repeat(2, 1fr);  
+      gap: 1rem;  
+      margin-top: 1rem;  
+    }  
+    .pot-column {  
+      background: rgba(255, 255, 255, 0.05);  
+      padding: 1rem;  
+      border-radius: 0.5rem;  
+      text-align: left;  
+    }  
+    .pot-column h4 {  
+      margin-bottom: 0.5rem;  
+    }  
+    .match-result {  
+      text-align: center;  
+      font-weight: 700;  
+      color: #34d399;  
+      user-select: none;  
+      align-self: center;  
+    }  
+    table {  
+      border-collapse: collapse;  
+      width: 100%;  
+      max-width: 900px;  
+      margin: 0 auto;  
+      color: #f0f0f0;  
+      background: rgba(0,0,0,0.6);  
+      border-radius: 0.5rem;  
+      overflow: hidden;  
+      font-weight: 600;  
+      font-family: 'Roboto Mono', monospace;  
+      font-size: 0.9rem;  
+    }  
+    th, td {  
+      border: 1px solid #facc15;  
+      padding: 0.5rem;  
+      text-align: center;  
+    }  
+    thead {  
+      background-color: #b45309;  
+      color: #fff;  
+    }  
+    tbody tr:nth-child(even) {  
+      background-color: rgba(255, 255, 255, 0.1);  
+    }  
+    /* Color coding for standings */  
+    .direct-qualifier {  
+      background-color: #2563eb;  
+      color: #e0e7ff;  
+      font-weight: 700;  
+    }  
+    .playoff-qualifier {  
+      background-color: #2563eb;  
+      color: #e0e7ff;  
+      font-weight: 700;  
+    }  
+    .eliminated {  
+      background-color: #2563eb;  
+      color: #fef2f2;  
+      font-weight: 700;  
+    }  
+    .team-link {  
+      color: #ffd43b;  
+      cursor: pointer;  
+      text-decoration: underline;  
+    }  
+    .team-link:hover {  
+      color: #fff;  
+    }  
+    .league-completed {  
+      background: linear-gradient(135deg, #4a044e, #190061);  
+      padding: 1rem;  
+      border-radius: 0.5rem;  
+      text-align: center;  
+      margin: 1rem auto;  
+      max-width: 700px;  
+      border: 2px solid #facc15;  
+      font-weight: 700;  
+      font-size: 1.2rem;  
+    }  
+    .playoff-grid {  
+      display: grid;  
+      grid-template-columns: 1fr 0.3fr 1fr;  
+      gap: 0.8rem;  
+      max-width: 700px;  
+      margin: 0 auto;  
+      font-weight: 600;  
+      font-size: 1rem;  
+    }  
+    .eliminated-teams {  
+      display: flex;  
+      flex-wrap: wrap;  
+      justify-content: center;  
+      gap: 0.5rem;  
+      margin-top: 1rem;  
+    }  
+    .eliminated-team {  
+      background: rgba(239, 68, 68, 0.2);  
+      padding: 0.3rem 0.6rem;  
+      border-radius: 0.5rem;  
+      border: 1px solid #ef4444;  
+    }
+    .quarter-final-table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .quarter-final-table thead {
+      background-color: #003399;
+      color: white;
+    }
+    .quarter-final-table th {
+      padding: 12px;
+      text-align: center;
+    }
+    .quarter-final-table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #facc15;
+    }
+    .quarter-final-table tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .quarter-final-table tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .quarter-final-title {
+      text-align: center;
+      color: #003399;
+      font-family: Arial, sans-serif;
+      font-size: 2rem;
+      margin: 1.5rem 0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .progress-tracker {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+      gap: 0.5rem;
+    }
+    .progress-step {
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+    .progress-step.active {
+      background: #facc15;
+      color: #000;
+      font-weight: 700;
+    }
+    .progress-step.completed {
+      background: #34d399;
+      color: #000;
+      font-weight: 700;
+    }
+    .surprise-banner {
+      background: linear-gradient(90deg, #ff0000, #ff8c00, #ff0000);
+      background-size: 200% auto;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      margin: 1rem auto;
+      max-width: 700px;
+      animation: surpriseBanner 2s linear infinite;
+      display: none; /* Hidden by default, will be shown tomorrow */
+    }
+    @keyframes surpriseBanner {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .shock-text {
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 1rem 0;
+      color: #ff0000;
+      text-shadow: 0 0 10px rgba(255,0,0,0.7);
+      display: none; /* Hidden by default */
+    }
 
-@media (max-width: 640px) {  
-  .section-container {  
-    padding: 1rem;  
-    margin-bottom: 1.5rem;  
-  }  
-  h1 {  
-    font-size: 1.8rem;  
-  }  
-  h2 {  
-    font-size: 1.5rem;  
-  }  
-  .fixture-grid, .playoff-grid {  
-    grid-template-columns: 1fr 0.3fr 1fr;  
-    gap: 0.5rem;  
-    font-size: 0.9rem;  
-  }  
-  .player-link {  
-    padding: 0.3rem;  
-    font-size: 0.85rem;  
-  }  
-  .pot-players {  
-    grid-template-columns: 1fr;  
-  }  
-  table {  
-    font-size: 0.8rem;  
-  }  
-  th, td {  
-    padding: 0.3rem;  
-  }  
-}
+    @media (max-width: 640px) {  
+      .section-container {  
+        padding: 1rem;  
+        margin-bottom: 1.5rem;  
+      }  
+      h1 {  
+        font-size: 1.8rem;  
+      }  
+      h2 {  
+        font-size: 1.5rem;  
+      }  
+      .fixture-grid, .playoff-grid {  
+        grid-template-columns: 1fr 0.3fr 1fr;  
+        gap: 0.5rem;  
+        font-size: 0.9rem;  
+      }  
+      .player-link {  
+        padding: 0.3rem;  
+        font-size: 0.85rem;  
+      }  
+      .pot-players {  
+        grid-template-columns: 1fr;  
+      }  
+      table {  
+        font-size: 0.8rem;  
+      }  
+      th, td {  
+        padding: 0.3rem;  
+      }
+      .quarter-final-table {
+        font-size: 0.9rem;
+      }
+      .quarter-final-title {
+        font-size: 1.5rem;
+      }
+      .progress-step {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+      }
+    }
   </style>  
 </head>  
 <body class="px-4 py-8 sm:px-6 sm:py-12">  
@@ -240,15 +336,83 @@ tbody tr:nth-child(even) {
       ⚽ The ultimate eFootball knockout battle! 32 teams. 1 Champion. Glory Awaits!  
     </p>  
     <div class="league-completed animate__animated animate__pulse">  
-      🎉 LEAGUE PHASE COMPLETED! 🏆 The group stage battles are over - now the real tournament begins!  
+      🏆 TOURNAMENT PROGRESS: Quarter-Finals Stage 🏆  
     </div>  
+    
+    <!-- SURPRISE ELEMENT (HIDDEN UNTIL TOMORROW) -->
+    <div class="surprise-banner" id="surpriseBanner">
+      🚨 SHOCKING ANNOUNCEMENT: Tournament prize pool DOUBLED to KES 20,000! 🚨
+    </div>
+    
+    <div class="shock-text" id="shockText">
+      ⚠️ BREAKING: Tournament format changing to BEST OF 3 for all remaining matches! ⚠️
+    </div>
+    
     <p class="notice animate__animated animate__fadeInRight">  
       🚫 Registration is now <strong>closed</strong>. The tournament is underway.  
     </p>  
     <p class="info-text animate__animated animate__fadeInUp">  
-      The top 8 teams have secured direct qualification to the Round of 16! Teams ranked 9-24 will battle in playoffs for the remaining spots.  
+      The competition reaches boiling point as we enter the Quarter-Finals! Only 8 elite teams remain in the hunt for the championship.  
     </p>  
   </div>  
+
+  <!-- Progress Tracker -->
+  <div class="progress-tracker">
+    <div class="progress-step completed">Group Stage</div>
+    <div class="progress-step completed">Playoffs</div>
+    <div class="progress-step completed">Round of 16</div>
+    <div class="progress-step active">Quarter-Finals</div>
+    <div class="progress-step">Semi-Finals</div>
+    <div class="progress-step">Final</div>
+  </div>
+
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400 text-center">Round of 16 Results</h2>  
+    <div class="playoff-grid" id="round16-results">  
+      <!-- Round of 16 results will be inserted here by JavaScript -->  
+    </div>  
+  </div>
+
+  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
+    <h2 class="quarter-final-title">Quarter-Final Fixtures</h2>
+    <table class="quarter-final-table">
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>First Leg</th>
+          <th>Second Leg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Atraz</b> vs <b>Trumperbee</b></td>
+          <td>Atraz (Home)</td>
+          <td>Trumperbee (Home)</td>
+        </tr>
+        <tr>
+          <td><b>Mwai</b> vs <b>Braizen</b></td>
+          <td>Mwai (Home)</td>
+          <td>Braizen (Home)</td>
+        </tr>
+        <tr>
+          <td><b>Itsotieno</b> vs <b>Agrey</b></td>
+          <td>Itsotieno (Home)</td>
+          <td>Agrey (Home)</td>
+        </tr>
+        <tr>
+          <td><b>Lanther</b> vs <b>Faisal</b></td>
+          <td>Lanther (Home)</td>
+          <td>Faisal (Home)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="info-text mt-4">
+      ⚠️ All Quarter-Final matches will be played as two-legged ties. The team with the higher aggregate score advances to the Semi-Finals.
+    </p>
+    <p class="info-text mt-2 text-red-400 font-bold">
+      🚨 Deadline for Quarter-Final matches: Sunday 11:59 PM EAT 🚨
+    </p>
+  </div>
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
     <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400 text-center">League Standings</h2>  
@@ -286,18 +450,14 @@ tbody tr:nth-child(even) {
   </div>  
 
   <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-blue-400 text-center">Round of 16 Fixtures</h2>  
-    <div class="fixture-grid" id="round16-fixtures">  
-      <!-- Round of 16 fixtures will be inserted here by JavaScript -->  
-    </div>  
-  </div>  
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
     <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-red-400 text-center">Eliminated Teams</h2>  
     <div class="text-center mb-4">These warriors fought hard but have been knocked out of the tournament:</div>  
     <div class="eliminated-teams" id="eliminated-teams">  
       <!-- Eliminated teams will be inserted here by JavaScript -->  
     </div>  
+    <p class="info-text mt-4">
+      💔 24 teams have been eliminated so far. Only 8 remain in the hunt for glory!
+    </p>
   </div>  
 
   <div class="footer-text animate__animated animate__fadeIn">  
@@ -305,8 +465,6 @@ tbody tr:nth-child(even) {
     <p>Contact via <a href="https://wa.me/254790231190" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>  
     <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>  
   </div>  
-
-  <audio id="backgroundMusic" autoplay></audio>
 
   <script>  
     // Player data with phone numbers  
@@ -336,13 +494,16 @@ tbody tr:nth-child(even) {
       "Dukeh": "+254710838132",  
       "Homeywonder": "+254743960664",  
       "Blitzfury": "+254729861714",  
+      "Braizen": "+254725912919",  
       "Braizen_10": "+254725912919",  
       "Mwai": "+254794707385",  
       "Itsotieno020": "+254742245445",  
       "Griffo": "+254745147572",  
       "Aniro": "+254719455239",  
       "Storm": "+254755733718",  
-      "Ziggy": "+254113359005"  
+      "Ziggy": "+254113359005",
+      "Agrey": "+254719455239",
+      "Fella": "+254715281820"
     };  
 
     // Playoff results
@@ -365,24 +526,28 @@ tbody tr:nth-child(even) {
       ["Boogie", "Steve", {score1:1, score2:1}]
     ];
 
-    // Round of 16 fixtures
-    const round16Fixtures = [
-      ["Trumperbee", "Boogie"],
-      ["Faisal", "Crmax70"],
-      ["Aniro", "Kenton"],
-      ["Felixmorara", "Itsotieno020"],
-      ["Dukeh", "Mwai"],
-      ["Braizen_10", "Magggs"],
-      ["Turna", "Atraz"],
-      ["Lanther", "Mufasa2fly"]
+    // Round of 16 results
+    const round16Results = [
+      ["Mwai", "Dukeh", {score1:5, score2:1}],
+      ["Mwai", "Dukeh", {score1:4, score2:3}],
+      ["Lanther", "Mufasa2fly", {score1:3, score2:2}],
+      ["Lanther", "Mufasa2fly", {score1:3, score2:2}],
+      ["Braizen", "Magggs", {score1:5, score2:4}],
+      ["Braizen", "Magggs", {score1:4, score2:1}],
+      ["Turna", "Atraz", {score1:3, score2:2}],
+      ["Turna", "Atraz", {score1:2, score2:4}],
+      ["Boogie", "Trumperbee", {score1:0, score2:1}],
+      ["Boogie", "Trumperbee", {score1:0, score2:0}],
+      ["Fella", "Itsotieno020", {score1:3, score2:2}],
+      ["Fella", "Itsotieno020", {score1:5, score2:0}],
+      ["Agrey", "Kenton", {score1:1, score2:0}],
+      ["Agrey", "Kenton", {score1:0, score2:0}],
+      ["Faisal", "Crmax70", {score1:1, score2:0}],
+      ["Faisal", "Crmax70", {score1:1, score2:0}]
     ];
 
-    // Music playlist
-    const musicPlaylist = [
-      { name: "Champions Anthem - Epic Sports Theme", src: "https://example.com/champions-anthem.mp3" },
-      { name: "Victory Chant - EDM Sports Remix", src: "https://example.com/victory-chant.mp3" },
-      { name: "Final Whistle - Lofi Hip Hop", src: "https://example.com/final-whistle.mp3" }
-    ];
+    // All completed matches (playoffs + round of 16)
+    const allCompletedMatches = [...playoffResults, ...round16Results];
 
     // Initialize standings  
     let standings = {};  
@@ -539,35 +704,98 @@ tbody tr:nth-child(even) {
       });
     }
 
-    // Function to render Round of 16 fixtures
-    function renderRound16Fixtures() {
-      const fixtureGrid = document.getElementById('round16-fixtures');
-      if (!fixtureGrid) return;
+    // Function to render Round of 16 results
+    function renderRound16Results() {
+      const resultsGrid = document.getElementById('round16-results');
+      if (!resultsGrid) return;
       
-      fixtureGrid.innerHTML = '';
+      resultsGrid.innerHTML = '';
       
-      round16Fixtures.forEach(match => {
+      // Group results by matchup
+      const matchups = {};
+      round16Results.forEach(match => {
         const [team1, team2] = match;
+        const key = `${team1}-${team2}`;
+        if (!matchups[key]) {
+          matchups[key] = [];
+        }
+        matchups[key].push(match);
+      });
+      
+      // Render each matchup
+      Object.values(matchups).forEach(matches => {
+        const [team1, team2] = matches[0];
+        
+        // Create container for this matchup
+        const matchupContainer = document.createElement('div');
+        matchupContainer.style.gridColumn = '1 / span 3';
+        matchupContainer.style.marginBottom = '1rem';
+        
+        // Add matchup title
+        const title = document.createElement('div');
+        title.textContent = `${team1} vs ${team2}`;
+        title.style.textAlign = 'center';
+        title.style.fontWeight = 'bold';
+        title.style.marginBottom = '0.5rem';
+        matchupContainer.appendChild(title);
+        
+        // Add results grid
+        const resultsGrid = document.createElement('div');
+        resultsGrid.style.display = 'grid';
+        resultsGrid.style.gridTemplateColumns = '1fr 0.3fr 1fr';
+        resultsGrid.style.gap = '0.8rem';
+        
+        // Add each leg result
+        matches.forEach(match => {
+          const [t1, t2, result] = match;
           
-        const team1Link = document.createElement('a');
-        team1Link.className = 'player-link';
-        team1Link.textContent = team1;
-        team1Link.href = `https://wa.me/${players[team1]}`;
-        team1Link.target = "_blank";
+          const team1Link = document.createElement('a');
+          team1Link.className = 'player-link';
+          team1Link.textContent = t1;
+          team1Link.href = `https://wa.me/${players[t1]}`;
+          team1Link.target = "_blank";
           
-        const team2Link = document.createElement('a');
-        team2Link.className = 'player-link';
-        team2Link.textContent = team2;
-        team2Link.href = `https://wa.me/${players[team2]}`;
-        team2Link.target = "_blank";
+          const team2Link = document.createElement('a');
+          team2Link.className = 'player-link';
+          team2Link.textContent = t2;
+          team2Link.href = `https://wa.me/${players[t2]}`;
+          team2Link.target = "_blank";
           
-        const vsSeparator = document.createElement('div');
-        vsSeparator.className = 'vs-separator';
-        vsSeparator.textContent = 'vs';
+          const resultDisplay = document.createElement('div');
+          resultDisplay.className = 'match-result';
+          resultDisplay.textContent = `${result.score1}-${result.score2}`;
           
-        fixtureGrid.appendChild(team1Link);
-        fixtureGrid.appendChild(vsSeparator);
-        fixtureGrid.appendChild(team2Link);
+          resultsGrid.appendChild(team1Link);
+          resultsGrid.appendChild(resultDisplay);
+          resultsGrid.appendChild(team2Link);
+        });
+        
+        // Calculate and display aggregate
+        const aggregate = document.createElement('div');
+        aggregate.style.gridColumn = '1 / span 3';
+        aggregate.style.textAlign = 'center';
+        aggregate.style.marginTop = '0.5rem';
+        
+        const total1 = matches.reduce((sum, match) => sum + match[2].score1, 0);
+        const total2 = matches.reduce((sum, match) => sum + match[2].score2, 0);
+        
+        let winner;
+        if (total1 > total2) {
+          winner = team1;
+        } else if (total2 > total1) {
+          winner = team2;
+        } else {
+          // Handle away goals or other tiebreakers if needed
+          winner = "Match tied (check rules)";
+        }
+        
+        aggregate.textContent = `Aggregate: ${total1}-${total2} (${winner} advances)`;
+        aggregate.style.fontWeight = 'bold';
+        aggregate.style.color = '#facc15';
+        
+        resultsGrid.appendChild(aggregate);
+        matchupContainer.appendChild(resultsGrid);
+        resultsGrid.appendChild(matchupContainer);
       });
     }
 
@@ -613,96 +841,40 @@ tbody tr:nth-child(even) {
         
       eliminatedContainer.innerHTML = '';  
         
-      sortedStandings.slice(24).forEach(team => {  
-        const teamEl = document.createElement('div');  
-        teamEl.className = 'eliminated-team';  
-        teamEl.textContent = team.team;  
-        eliminatedContainer.appendChild(teamEl);  
-      });  
+      // Get all teams that didn't make it to quarter-finals
+      const quarterFinalists = ["Atraz", "Trumperbee", "Mwai", "Braizen", "Itsotieno020", "Agrey", "Lanther", "Faisal"];
+      const eliminated = sortedStandings.filter(team => !quarterFinalists.includes(team.team));
+      
+      eliminated.forEach(team => {
+        const teamElement = document.createElement('div');
+        teamElement.className = 'eliminated-team';
+        teamElement.textContent = team.team;
+        eliminatedContainer.appendChild(teamElement);
+      });
     }  
 
-    // Music player functionality
-    let currentTrack = 0;
-    const audioPlayer = document.getElementById('backgroundMusic');
-    
-    function playNextTrack() {
-      currentTrack = (currentTrack + 1) % musicPlaylist.length;
-      audioPlayer.src = musicPlaylist[currentTrack].src;
-      audioPlayer.play();
-    }
-    
-    // Set up event listeners for music player
-    audioPlayer.addEventListener('ended', playNextTrack);
-    
-    // Start playing music
-    if (musicPlaylist.length > 0) {
-      audioPlayer.src = musicPlaylist[0].src;
-      audioPlayer.play().catch(e => console.log("Autoplay prevented:", e));
+    // Function to show surprise elements tomorrow
+    function setupSurprise() {
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      
+      // Check if it's tomorrow or later
+      if (today >= tomorrow) {
+        document.getElementById('surpriseBanner').style.display = 'block';
+        document.getElementById('shockText').style.display = 'block';
+      }
     }
 
-    // Combined array of all completed matches from all matchdays  
-    const allCompletedMatches = [  
-      // Matchday 1 Results  
-      ["Atraz", "AYUMAH", {score1:7, score2:0}],  
-      ["Lanther", "Magggs", {score1:2, score2:4}],  
-      ["Ziggy", "Young_furry", {score1:5, score2:4}],  
-      ["Mufasa2fly", "Steve", {score1:3, score2:0}],  
-      ["Trumperbee", "Saif", {score1:6, score2:0}],  
-      ["Faisal", "Drunken Master", {score1:4, score2:0}],  
-      ["Abishai", "Yotti", {score1:1, score2:0}],  
-      ["Immortaljester", "Turna", {score1:1, score2:4}],  
-      ["Felixmorara", "Kenton", {score1:1, score2:0}],  
-      ["Gitran", "Raydelo", {score1:1, score2:0}],  
-      ["Boogie", "Stafyodi", {score1:3, score2:0}],  
-      ["Crmax70", "Storm", {score1:3, score2:3}],  
-      ["Dukeh", "Homeywonder", {score1:1, score2:0}],  
-      ["Blitzfury", "Braizen_10", {score1:0, score2:1}],  
-      ["Mwai", "Itsotieno020", {score1:1, score2:2}],  
-      ["Griffo", "Aniro", {score1:0, score2:8}],  
-        
-      // Matchday 2 Results  
-      ["Crmax70", "Atraz", {score1:3, score2:2}],  
-      ["Braizen_10", "Homeywonder", {score1:3, score2:1}],  
-      ["Trumperbee", "Gitran", {score1:8, score2:3}],  
-      ["Felixmorara", "Immortaljester", {score1:2, score2:1}],  
-      ["Faisal", "Ziggy", {score1:4, score2:1}],  
-      ["Aniro", "Lanther", {score1:3, score2:1}],  
-      ["Dukeh", "Blitzfury", {score1:2, score2:1}],  
-      ["Kenton", "Turna", {score1:3, score2:2}],  
-      ["Itsotieno020", "Boogie", {score1:1, score2:0}],  
-      ["Storm", "AYUMAH", {score1:6, score2:0}],  
-      ["Magggs", "Griffo", {score1:3, score2:0}],  
-      ["Saif", "Raydelo", {score1:3, score2:0}],  
-      ["Mwai", "Stafyodi", {score1:3, score2:0}],  
-      ["Abishai", "Mufasa2fly", {score1:0, score2:1}],  
-      ["Steve", "Yotti", {score1:0, score2:0}],  
-      ["Drunken Master", "Young_furry", {score1:1, score2:1}],  
-        
-      // Matchday 3 Results  
-      ["Crmax70", "AYUMAH", {score1:4, score2:2}],  
-      ["Dukeh", "Braizen_10", {score1:4, score2:2}],  
-      ["Itsotieno020", "Stafyodi", {score1:3, score2:2}],  
-      ["Kenton", "Immortaljester", {score1:2, score2:1}],  
-      ["Felixmorara", "Turna", {score1:4, score2:0}],  
-      ["Trumperbee", "Raydelo", {score1:3, score2:0}],  
-      ["Drunken Master", "Ziggy", {score1:4, score2:3}],  
-      ["Atraz", "Storm", {score1:3, score2:1}],  
-      ["Lanther", "Griffo", {score1:5, score2:0}],  
-      ["Steve", "Abishai", {score1:2, score2:0}],  
-      ["Aniro", "Magggs", {score1:6, score2:2}],  
-      ["Homeywonder", "Blitzfury", {score1:0, score2:0}],  
-      ["Faisal", "Young_furry", {score1:7, score2:2}],  
-      ["Gitran", "Saif", {score1:4, score2:2}],  
-      ["Mufasa2fly", "Yotti", {score1:0, score2:0}],  
-      ["Mwai", "Boogie", {score1:0, score2:0}]  
-    ];  
-
-    // Initialize the page  
-    rebuildStandings();  
-    renderStandings();  
-    renderPlayoffResults();
-    renderRound16Fixtures();
-    renderEliminatedTeams();  
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      rebuildStandings();
+      renderStandings();
+      renderPlayoffResults();
+      renderRound16Results();
+      renderEliminatedTeams();
+      setupSurprise();
+    });
   </script>  
 </body>  
 </html>
