@@ -1,880 +1,1203 @@
 <!DOCTYPE html>
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>Struggle for the Fittest eFootball League</title>  
-  <script src="https://cdn.tailwindcss.com"></script>  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet" />  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>  
-  <style>  
-    body {  
-      font-family: 'Poppins', sans-serif;  
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);  
-      color: #f0f0f0;  
-      min-height: 100vh;  
-    }  
-    .section-container {  
-      background: rgba(0, 0, 0, 0.5);  
-      border-radius: 1rem;  
-      padding: 1.5rem;  
-      margin-bottom: 2rem;  
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);  
-      max-width: 900px;  
-      margin-left: auto;  
-      margin-right: auto;  
-    }  
-    h1, h2, h3 {  
-      font-family: 'Roboto Mono', monospace;  
-      letter-spacing: 0.05em;  
-    }  
-    .fixture-grid {  
-      display: grid;  
-      grid-template-columns: 1fr 0.5fr 1fr;  
-      gap: 0.8rem;  
-      max-width: 700px;  
-      margin: 0 auto;  
-      font-weight: 600;  
-      font-size: 1rem;  
-      color: #ffd43b;  
-    }  
-    .player-link {  
-      background: rgba(255, 255, 255, 0.1);  
-      padding: 0.5rem;  
-      border-radius: 0.5rem;  
-      text-align: center;  
-      color: #ffd43b;  
-      box-shadow: 0 2px 6px rgba(255, 212, 59, 0.4);  
-      user-select: none;  
-      transition: background-color 0.3s ease, color 0.3s ease;  
-      cursor: pointer;  
-      text-decoration: none;  
-      display: block;  
-      word-break: break-word;  
-    }  
-    .player-link:hover {  
-      background: rgba(255, 255, 255, 0.25);  
-      color: #fff;  
-    }  
-    .vs-separator {  
-      text-align: center;  
-      color: #facc15;  
-      font-weight: 700;  
-      user-select: none;  
-      align-self: center;  
-    }  
-    .notice {  
-      text-align: center;  
-      font-size: 1.1rem;  
-      font-weight: 700;  
-      color: #f87171;  
-      margin-bottom: 1.5rem;  
-    }  
-    .info-text {  
-      max-width: 700px;  
-      margin: 0 auto 2rem auto;  
-      font-size: 1rem;  
-      color: #a5b4fc;  
-      font-weight: 600;  
-      text-align: center;  
-    }  
-    .footer-text {  
-      text-align: center;  
-      font-size: 0.9rem;  
-      color: #9ca3af;  
-      margin-top: 3rem;  
-    }  
-    .footer-text a {  
-      color: #34d399;  
-      text-decoration: underline;  
-    }  
-    .pot-info {  
-      background: rgba(255, 255, 255, 0.1);  
-      padding: 1rem;  
-      border-radius: 0.5rem;  
-      margin: 1.5rem auto;  
-      max-width: 700px;  
-      text-align: center;  
-      border: 1px solid #facc15;  
-    }  
-    .pot-players {  
-      display: grid;  
-      grid-template-columns: repeat(2, 1fr);  
-      gap: 1rem;  
-      margin-top: 1rem;  
-    }  
-    .pot-column {  
-      background: rgba(255, 255, 255, 0.05);  
-      padding: 1rem;  
-      border-radius: 0.5rem;  
-      text-align: left;  
-    }  
-    .pot-column h4 {  
-      margin-bottom: 0.5rem;  
-    }  
-    .match-result {  
-      text-align: center;  
-      font-weight: 700;  
-      color: #34d399;  
-      user-select: none;  
-      align-self: center;  
-    }  
-    table {  
-      border-collapse: collapse;  
-      width: 100%;  
-      max-width: 900px;  
-      margin: 0 auto;  
-      color: #f0f0f0;  
-      background: rgba(0,0,0,0.6);  
-      border-radius: 0.5rem;  
-      overflow: hidden;  
-      font-weight: 600;  
-      font-family: 'Roboto Mono', monospace;  
-      font-size: 0.9rem;  
-    }  
-    th, td {  
-      border: 1px solid #facc15;  
-      padding: 0.5rem;  
-      text-align: center;  
-    }  
-    thead {  
-      background-color: #b45309;  
-      color: #fff;  
-    }  
-    tbody tr:nth-child(even) {  
-      background-color: rgba(255, 255, 255, 0.1);  
-    }  
-    /* Color coding for standings */  
-    .direct-qualifier {  
-      background-color: #2563eb;  
-      color: #e0e7ff;  
-      font-weight: 700;  
-    }  
-    .playoff-qualifier {  
-      background-color: #2563eb;  
-      color: #e0e7ff;  
-      font-weight: 700;  
-    }  
-    .eliminated {  
-      background-color: #2563eb;  
-      color: #fef2f2;  
-      font-weight: 700;  
-    }  
-    .team-link {  
-      color: #ffd43b;  
-      cursor: pointer;  
-      text-decoration: underline;  
-    }  
-    .team-link:hover {  
-      color: #fff;  
-    }  
-    .league-completed {  
-      background: linear-gradient(135deg, #4a044e, #190061);  
-      padding: 1rem;  
-      border-radius: 0.5rem;  
-      text-align: center;  
-      margin: 1rem auto;  
-      max-width: 700px;  
-      border: 2px solid #facc15;  
-      font-weight: 700;  
-      font-size: 1.2rem;  
-    }  
-    .playoff-grid {  
-      display: grid;  
-      grid-template-columns: 1fr 0.3fr 1fr;  
-      gap: 0.8rem;  
-      max-width: 700px;  
-      margin: 0 auto;  
-      font-weight: 600;  
-      font-size: 1rem;  
-    }  
-    .eliminated-teams {  
-      display: flex;  
-      flex-wrap: wrap;  
-      justify-content: center;  
-      gap: 0.5rem;  
-      margin-top: 1rem;  
-    }  
-    .eliminated-team {  
-      background: rgba(239, 68, 68, 0.2);  
-      padding: 0.3rem 0.6rem;  
-      border-radius: 0.5rem;  
-      border: 1px solid #ef4444;  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Struggle for the Fittest | eFootball Champions League</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ucl-blue: #1a3e8c;
+      --ucl-dark-blue: #0d2350;
+      --ucl-light-blue: #00aeff;
+      --ucl-white: #ffffff;
+      --ucl-silver: #e8e8e8;
+      --ucl-gold: #ffdf00;
     }
-    .quarter-final-table {
-      width: 90%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      background: rgba(255, 255, 255, 0.1);
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--ucl-dark-blue);
+      color: var(--ucl-white);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 174, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 174, 255, 0.1) 0%, transparent 20%);
     }
-    .quarter-final-table thead {
-      background-color: #003399;
-      color: white;
+    
+    .header {
+      background: linear-gradient(135deg, var(--ucl-blue), var(--ucl-dark-blue));
+      border-bottom: 4px solid var(--ucl-gold);
     }
-    .quarter-final-table th {
-      padding: 12px;
-      text-align: center;
+    
+    .ucl-logo {
+      background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/UEFA_Champions_League_logo_2.svg/1200px-UEFA_Champions_League_logo_2.svg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 60px;
+      width: 60px;
     }
-    .quarter-final-table td {
-      padding: 10px;
-      text-align: center;
-      border: 1px solid #facc15;
+    
+    .match-card {
+      background: rgba(26, 62, 140, 0.5);
+      border: 1px solid var(--ucl-light-blue);
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .quarter-final-table tr:nth-child(even) {
-      background-color: rgba(255, 255, 255, 0.05);
+    
+    .match-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 174, 255, 0.2);
     }
-    .quarter-final-table tr:nth-child(odd) {
-      background-color: rgba(255, 255, 255, 0.1);
+    
+    .vs-text {
+      color: var(--ucl-gold);
+      font-weight: 700;
     }
-    .quarter-final-title {
-      text-align: center;
-      color: #003399;
-      font-family: Arial, sans-serif;
-      font-size: 2rem;
-      margin: 1.5rem 0;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
+    .stage-title {
+      position: relative;
+      color: var(--ucl-white);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
+    
+    .stage-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ucl-blue), var(--ucl-light-blue), var(--ucl-blue));
+    }
+    
+    .result-badge {
+      background-color: var(--ucl-light-blue);
+      color: var(--ucl-dark-blue);
+      font-weight: 700;
+    }
+    
+    .team-form-item {
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .team-form-item:hover {
+      background-color: rgba(0, 174, 255, 0.1);
+      transform: translateX(5px);
+    }
+    
+    .active-team {
+      background-color: rgba(0, 174, 255, 0.2);
+      border-left: 4px solid var(--ucl-gold);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .modal-content {
+      background: linear-gradient(135deg, var(--ucl-dark-blue), var(--ucl-blue));
+      border: 2px solid var(--ucl-gold);
+      border-radius: 10px;
+      max-width: 600px;
+      animation: modalFadeIn 0.4s;
+    }
+    
+    @keyframes modalFadeIn {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    
+    .close-modal {
+      color: var(--ucl-white);
+      font-size: 28px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    .close-modal:hover {
+      color: var(--ucl-gold);
+    }
+    
     .progress-tracker {
       display: flex;
       justify-content: center;
-      margin: 2rem 0;
-      gap: 0.5rem;
+      gap: 5px;
+      margin: 20px 0;
     }
+    
     .progress-step {
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      color: #a5b4fc;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--ucl-silver);
       font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      position: relative;
     }
-    .progress-step.active {
-      background: #facc15;
-      color: #000;
-      font-weight: 700;
-    }
+    
     .progress-step.completed {
-      background: #34d399;
-      color: #000;
+      background-color: var(--ucl-light-blue);
+      color: var(--ucl-dark-blue);
+    }
+    
+    .progress-step.active {
+      background-color: var(--ucl-gold);
+      color: var(--ucl-dark-blue);
       font-weight: 700;
     }
-    .surprise-banner {
-      background: linear-gradient(90deg, #ff0000, #ff8c00, #ff0000);
-      background-size: 200% auto;
-      color: white;
-      padding: 1rem;
-      text-align: center;
+    
+    .progress-step.completed::after {
+      content: '✓';
+      margin-left: 5px;
+    }
+    
+    .match-result-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .match-result-table th {
+      background-color: var(--ucl-blue);
+      color: var(--ucl-white);
+      padding: 10px;
+      text-align: left;
+    }
+    
+    .match-result-table td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .match-result-table tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .winner {
+      color: var(--ucl-gold);
       font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 0.5rem;
-      margin: 1rem auto;
-      max-width: 700px;
-      animation: surpriseBanner 2s linear infinite;
-      display: none; /* Hidden by default, will be shown tomorrow */
     }
-    @keyframes surpriseBanner {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
+    
+    .eliminated {
+      color: #ff6b6b;
     }
-    .shock-text {
-      font-size: 1.5rem;
-      text-align: center;
-      margin: 1rem 0;
-      color: #ff0000;
-      text-shadow: 0 0 10px rgba(255,0,0,0.7);
-      display: none; /* Hidden by default */
+    
+    .still-in {
+      color: #6bff6b;
     }
-
-    @media (max-width: 640px) {  
-      .section-container {  
-        padding: 1rem;  
-        margin-bottom: 1.5rem;  
-      }  
-      h1 {  
-        font-size: 1.8rem;  
-      }  
-      h2 {  
-        font-size: 1.5rem;  
-      }  
-      .fixture-grid, .playoff-grid {  
-        grid-template-columns: 1fr 0.3fr 1fr;  
-        gap: 0.5rem;  
-        font-size: 0.9rem;  
-      }  
-      .player-link {  
-        padding: 0.3rem;  
-        font-size: 0.85rem;  
-      }  
-      .pot-players {  
-        grid-template-columns: 1fr;  
-      }  
-      table {  
-        font-size: 0.8rem;  
-      }  
-      th, td {  
-        padding: 0.3rem;  
-      }
-      .quarter-final-table {
-        font-size: 0.9rem;
-      }
-      .quarter-final-title {
-        font-size: 1.5rem;
-      }
+    
+    .trophy-icon {
+      color: var(--ucl-gold);
+    }
+    
+    @media (max-width: 768px) {
       .progress-step {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      
+      .ucl-logo {
+        height: 40px;
+        width: 40px;
       }
     }
-  </style>  
-</head>  
-<body class="px-4 py-8 sm:px-6 sm:py-12">  
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInDown">  
-    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-yellow-400 text-center animate__animated animate__zoomIn">Struggle for the Fittest</h1>  
-    <p class="text-lg sm:text-xl text-center text-green-400 font-semibold mb-2 animate__animated animate__fadeInLeft">  
-      ⚽ The ultimate eFootball knockout battle! 32 teams. 1 Champion. Glory Awaits!  
-    </p>  
-    <div class="league-completed animate__animated animate__pulse">  
-      🏆 TOURNAMENT PROGRESS: Quarter-Finals Stage 🏆  
-    </div>  
-    
-    <!-- SURPRISE ELEMENT (HIDDEN UNTIL TOMORROW) -->
-    <div class="surprise-banner" id="surpriseBanner">
-      🚨 SHOCKING ANNOUNCEMENT: Tournament prize pool DOUBLED to KES 20,000! 🚨
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="header py-4 px-6 shadow-lg">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <div class="ucl-logo"></div>
+        <h1 class="text-2xl md:text-3xl font-bold">Struggle for the Fittest</h1>
+      </div>
+      <div class="text-sm md:text-base">
+        <span class="font-semibold text-yellow-300">eFootball Champions League</span>
+      </div>
     </div>
-    
-    <div class="shock-text" id="shockText">
-      ⚠️ BREAKING: Tournament format changing to BEST OF 3 for all remaining matches! ⚠️
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto py-8 px-4">
+    <!-- Tournament Progress -->
+    <div class="progress-tracker">
+      <div class="progress-step completed">Group Stage</div>
+      <div class="progress-step completed">Round of 32</div>
+      <div class="progress-step completed">Round of 16</div>
+      <div class="progress-step completed">Quarter-finals</div>
+      <div class="progress-step active">Semi-finals</div>
+      <div class="progress-step">Final</div>
     </div>
-    
-    <p class="notice animate__animated animate__fadeInRight">  
-      🚫 Registration is now <strong>closed</strong>. The tournament is underway.  
-    </p>  
-    <p class="info-text animate__animated animate__fadeInUp">  
-      The competition reaches boiling point as we enter the Quarter-Finals! Only 8 elite teams remain in the hunt for the championship.  
-    </p>  
-  </div>  
 
-  <!-- Progress Tracker -->
-  <div class="progress-tracker">
-    <div class="progress-step completed">Group Stage</div>
-    <div class="progress-step completed">Playoffs</div>
-    <div class="progress-step completed">Round of 16</div>
-    <div class="progress-step active">Quarter-Finals</div>
-    <div class="progress-step">Semi-Finals</div>
-    <div class="progress-step">Final</div>
+    <!-- Current Stage -->
+    <section class="mb-12">
+      <h2 class="stage-title text-2xl font-bold mb-6">Semi-final Fixtures</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Match 1 -->
+        <div class="match-card p-6">
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-sm text-gray-300">First Leg - May 10</div>
+            <div class="text-sm font-semibold bg-blue-900 px-2 py-1 rounded">20:00 EAT</div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-xl font-bold">Atraz</div>
+            <div class="vs-text px-4">VS</div>
+            <div class="text-xl font-bold">Itsotieno</div>
+          </div>
+          <div class="mt-4 text-center text-sm text-gray-300">Stadium: eFootball Arena</div>
+        </div>
+        
+        <!-- Match 2 -->
+        <div class="match-card p-6">
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-sm text-gray-300">First Leg - May 11</div>
+            <div class="text-sm font-semibold bg-blue-900 px-2 py-1 rounded">20:00 EAT</div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-xl font-bold">Braizen</div>
+            <div class="vs-text px-4">VS</div>
+            <div class="text-xl font-bold">Faisal</div>
+          </div>
+          <div class="mt-4 text-center text-sm text-gray-300">Stadium: eFootball Arena</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Previous Results Section -->
+    <section class="mb-12">
+      <h2 class="stage-title text-2xl font-bold mb-6">Tournament Results</h2>
+      
+      <!-- Quarter-finals -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4 text-blue-300">Quarter-finals</h3>
+        <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+          <table class="match-result-table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>First Leg</th>
+                <th>Second Leg</th>
+                <th>Aggregate</th>
+                <th>Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Atraz vs Trumperbee</td>
+                <td>3-1</td>
+                <td>2-2</td>
+                <td>5-3</td>
+                <td class="winner">Atraz</td>
+              </tr>
+              <tr>
+                <td>Mwai vs Braizen</td>
+                <td>1-2</td>
+                <td>0-3</td>
+                <td>1-5</td>
+                <td class="winner">Braizen</td>
+              </tr>
+              <tr>
+                <td>Itsotieno vs Agrey</td>
+                <td>4-0</td>
+                <td>1-1</td>
+                <td>5-1</td>
+                <td class="winner">Itsotieno</td>
+              </tr>
+              <tr>
+                <td>Lanther vs Faisal</td>
+                <td>2-1</td>
+                <td>0-1</td>
+                <td>2-2 (a)</td>
+                <td class="winner">Faisal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Round of 16 -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4 text-blue-300">Round of 16</h3>
+        <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+          <table class="match-result-table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>First Leg</th>
+                <th>Second Leg</th>
+                <th>Aggregate</th>
+                <th>Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mwai vs Dukeh</td>
+                <td>5-1</td>
+                <td>4-3</td>
+                <td>9-4</td>
+                <td class="winner">Mwai</td>
+              </tr>
+              <tr>
+                <td>Lanther vs Mufasa2fly</td>
+                <td>3-2</td>
+                <td>3-2</td>
+                <td>6-4</td>
+                <td class="winner">Lanther</td>
+              </tr>
+              <tr>
+                <td>Braizen vs Magggs</td>
+                <td>5-4</td>
+                <td>4-1</td>
+                <td>9-5</td>
+                <td class="winner">Braizen</td>
+              </tr>
+              <tr>
+                <td>Turna vs Atraz</td>
+                <td>3-2</td>
+                <td>2-4</td>
+                <td>5-6</td>
+                <td class="winner">Atraz</td>
+              </tr>
+              <tr>
+                <td>Boogie vs Trumperbee</td>
+                <td>0-1</td>
+                <td>0-0</td>
+                <td>0-1</td>
+                <td class="winner">Trumperbee</td>
+              </tr>
+              <tr>
+                <td>Fella vs Itsotieno</td>
+                <td>3-2</td>
+                <td>5-0</td>
+                <td>8-2</td>
+                <td class="winner">Fella</td>
+              </tr>
+              <tr>
+                <td>Agrey vs Kenton</td>
+                <td>1-0</td>
+                <td>0-0</td>
+                <td>1-0</td>
+                <td class="winner">Agrey</td>
+              </tr>
+              <tr>
+                <td>Faisal vs Crmax70</td>
+                <td>1-0</td>
+                <td>1-0</td>
+                <td>2-0</td>
+                <td class="winner">Faisal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Group Stage Results -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-blue-300">Group Stage Results</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Group A -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group A</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Mwai</td>
+                  <td class="text-center">18</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Dukeh</td>
+                  <td class="text-center">15</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Young_furry</td>
+                  <td class="text-center">9</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Storm</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group B -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group B</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Lanther</td>
+                  <td class="text-center">21</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Mufasa2fly</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Raydelo</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Aniro</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group C -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group C</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Braizen</td>
+                  <td class="text-center">18</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Magggs</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Homeywonder</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Griffo</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group D -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group D</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Turna</td>
+                  <td class="text-center">15</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Atraz</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Blitzfury</td>
+                  <td class="text-center">9</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Ziggy</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group E -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group E</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Boogie</td>
+                  <td class="text-center">15</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Trumperbee</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Stafyodi</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. AYUMAH</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group F -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group F</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Fella</td>
+                  <td class="text-center">18</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Itsotieno</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Immortaljester</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Drunken Master</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group G -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group G</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Agrey</td>
+                  <td class="text-center">15</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Kenton</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Yotti</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Steve</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Group H -->
+          <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+            <h4 class="font-bold text-lg mb-2 text-center">Group H</h4>
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-700">
+                  <th class="text-left pb-2">Team</th>
+                  <th class="text-center pb-2">Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">1. Faisal</td>
+                  <td class="text-center">18</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">2. Crmax70</td>
+                  <td class="text-center">12</td>
+                </tr>
+                <tr class="border-b border-gray-700">
+                  <td class="py-2">3. Felixmorara</td>
+                  <td class="text-center">6</td>
+                </tr>
+                <tr>
+                  <td class="py-2">4. Gitran</td>
+                  <td class="text-center">3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Performance Section -->
+    <section class="mb-12">
+      <h2 class="stage-title text-2xl font-bold mb-6">Team Performance</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Team List -->
+        <div class="bg-gray-900 bg-opacity-50 rounded-lg p-4">
+          <h3 class="font-bold text-lg mb-4 border-b border-gray-700 pb-2">All Participants</h3>
+          <div class="space-y-2 max-h-96 overflow-y-auto" id="team-list">
+            <!-- Teams will be populated here by JavaScript -->
+          </div>
+        </div>
+        
+        <!-- Team Details -->
+        <div class="md:col-span-3 bg-gray-900 bg-opacity-50 rounded-lg p-6" id="team-details">
+          <div class="text-center py-10">
+            <i class="fas fa-search fa-3x text-blue-400 mb-4"></i>
+            <h3 class="text-xl font-semibold">Select a team to view their tournament journey</h3>
+            <p class="text-gray-400 mt-2">Click on any team name to see their match history and current status</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tournament Info -->
+    <section class="bg-gray-900 bg-opacity-50 rounded-lg p-6 mb-8">
+      <h2 class="stage-title text-2xl font-bold mb-6">Tournament Information</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-blue-300">Format</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+              <span>32 teams divided into 8 groups of 4</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+              <span>Top 2 from each group advance to knockout stage</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+              <span>Two-legged ties from Round of 16 to Semi-finals</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+              <span>Single-match Final</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-blue-300">Prize Pool</h3>
+          <div class="bg-blue-900 bg-opacity-50 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center">
+                <i class="fas fa-trophy trophy-icon mr-2"></i>
+                <span class="font-bold">Champion:</span>
+              </div>
+              <span class="font-bold">KES 10,000</span>
+            </div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center">
+                <i class="fas fa-medal text-gray-300 mr-2"></i>
+                <span>Runner-up:</span>
+              </div>
+              <span>KES 5,000</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <i class="fas fa-medal text-yellow-600 mr-2"></i>
+                <span>Semi-finalists:</span>
+              </div>
+              <span>KES 2,500 each</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 py-6 px-4">
+    <div class="container mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm text-gray-300">© 2023 Struggle for the Fittest eFootball Tournament</p>
+          <p class="text-xs text-gray-400">Inspired by UEFA Champions League</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-300 hover:text-white transition">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-white transition">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-300 hover:text-white transition">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Team Modal -->
+  <div id="teamModal" class="modal">
+    <div class="modal-content relative mx-auto my-12 p-6">
+      <span class="close-modal absolute top-4 right-6 cursor-pointer">&times;</span>
+      <div id="modalContent"></div>
+    </div>
   </div>
 
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400 text-center">Round of 16 Results</h2>  
-    <div class="playoff-grid" id="round16-results">  
-      <!-- Round of 16 results will be inserted here by JavaScript -->  
-    </div>  
-  </div>
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">
-    <h2 class="quarter-final-title">Quarter-Final Fixtures</h2>
-    <table class="quarter-final-table">
-      <thead>
-        <tr>
-          <th>Match</th>
-          <th>First Leg</th>
-          <th>Second Leg</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>Atraz</b> vs <b>Trumperbee</b></td>
-          <td>Atraz (Home)</td>
-          <td>Trumperbee (Home)</td>
-        </tr>
-        <tr>
-          <td><b>Mwai</b> vs <b>Braizen</b></td>
-          <td>Mwai (Home)</td>
-          <td>Braizen (Home)</td>
-        </tr>
-        <tr>
-          <td><b>Itsotieno</b> vs <b>Agrey</b></td>
-          <td>Itsotieno (Home)</td>
-          <td>Agrey (Home)</td>
-        </tr>
-        <tr>
-          <td><b>Lanther</b> vs <b>Faisal</b></td>
-          <td>Lanther (Home)</td>
-          <td>Faisal (Home)</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="info-text mt-4">
-      ⚠️ All Quarter-Final matches will be played as two-legged ties. The team with the higher aggregate score advances to the Semi-Finals.
-    </p>
-    <p class="info-text mt-2 text-red-400 font-bold">
-      🚨 Deadline for Quarter-Final matches: Sunday 11:59 PM EAT 🚨
-    </p>
-  </div>
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-yellow-400 text-center">League Standings</h2>  
-    <table aria-label="League standings table">  
-      <thead>  
-        <tr>  
-          <th>Pos</th>  
-          <th>Team</th>  
-          <th>Pld</th>  
-          <th>W</th>  
-          <th>D</th>  
-          <th>L</th>  
-          <th>GF</th>  
-          <th>GA</th>  
-          <th>GD</th>  
-          <th>Pts</th>  
-        </tr>  
-      </thead>  
-      <tbody id="standings-body">  
-        <!-- Standings rows will be inserted here by JavaScript -->  
-      </tbody>  
-    </table>  
-    <div class="mt-4 text-center">  
-      <p class="text-green-400 font-bold">Top 8: Direct qualification to Round of 16</p>  
-      <p class="text-yellow-400 font-bold">9-24: Playoff qualification</p>  
-      <p class="text-red-400 font-bold">25-32: Eliminated from tournament</p>  
-    </div>  
-  </div>  
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-green-400 text-center">Playoff Results</h2>  
-    <div class="playoff-grid" id="playoff-fixtures">  
-      <!-- Playoff fixtures will be inserted here by JavaScript -->  
-    </div>  
-  </div>  
-
-  <div class="max-w-4xl mx-auto section-container animate__animated animate__fadeInUp">  
-    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-red-400 text-center">Eliminated Teams</h2>  
-    <div class="text-center mb-4">These warriors fought hard but have been knocked out of the tournament:</div>  
-    <div class="eliminated-teams" id="eliminated-teams">  
-      <!-- Eliminated teams will be inserted here by JavaScript -->  
-    </div>  
-    <p class="info-text mt-4">
-      💔 24 teams have been eliminated so far. Only 8 remain in the hunt for glory!
-    </p>
-  </div>  
-
-  <div class="footer-text animate__animated animate__fadeIn">  
-    <p>Developed by <strong class="text-yellow-400">Technical Staff</strong></p>  
-    <p>Contact via <a href="https://wa.me/254790231190" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>  
-    <p class="mt-2 text-xs text-white">Tournament proudly sponsored by <span class="text-blue-400 font-semibold">Konami ✅</span></p>  
-  </div>  
-
-  <script>  
-    // Player data with phone numbers  
-    const players = {  
-      "Trumperbee": "+254790231190",  
-      "Saif": "+254758631606",  
-      "Young_furry": "+254112449057",  
-      "Magggs": "+254115922639",  
-      "Lanther": "+254718167359",  
-      "Faisal": "+254738333443",  
-      "Drunken Master": "+254792406027",  
-      "Mufasa2fly": "+254736567664",  
-      "Steve": "+254701504755",  
-      "Abishai": "+254759217313",  
-      "Yotti": "+254701289677",  
-      "Immortaljester": "+254743484006",  
-      "Turna": "+254748632463",  
-      "Felixmorara": "+254715281820",  
-      "Kenton": "+254704152817",  
-      "Gitran": "+254794209536",  
-      "Raydelo": "+254114118860",  
-      "Boogie": "+254742458718",  
-      "Stafyodi": "+254115635847",  
-      "Crmax70": "+254716027382",  
-      "Atraz": "+254740412543",  
-      "AYUMAH": "+254768496839",  
-      "Dukeh": "+254710838132",  
-      "Homeywonder": "+254743960664",  
-      "Blitzfury": "+254729861714",  
-      "Braizen": "+254725912919",  
-      "Braizen_10": "+254725912919",  
-      "Mwai": "+254794707385",  
-      "Itsotieno020": "+254742245445",  
-      "Griffo": "+254745147572",  
-      "Aniro": "+254719455239",  
-      "Storm": "+254755733718",  
-      "Ziggy": "+254113359005",
-      "Agrey": "+254719455239",
-      "Fella": "+254715281820"
-    };  
-
-    // Playoff results
-    const playoffResults = [
-      ["Kenton", "Abishai", {score1:1, score2:2}],
-      ["Kenton", "Abishai", {score1:4, score2:1}],
-      ["Magggs", "Saif", {score1:2, score2:0}],
-      ["Magggs", "Saif", {score1:3, score2:0}],
-      ["Atraz", "Yotti", {score1:5, score2:0}],
-      ["Atraz", "Yotti", {score1:2, score2:2}],
-      ["Mwai", "Drunken Master", {score1:4, score2:2}],
-      ["Mwai", "Drunken Master", {score1:1, score2:0}],
-      ["Braizen", "Ziggy", {score1:3, score2:0}],
-      ["Braizen", "Ziggy", {score1:1, score2:0}],
-      ["Turna", "Gitran", {score1:3, score2:0}],
-      ["Turna", "Gitran", {score1:3, score2:0}],
-      ["Lanther", "Storm", {score1:5, score2:1}],
-      ["Lanther", "Storm", {score1:2, score2:5}],
-      ["Boogie", "Steve", {score1:1, score2:0}],
-      ["Boogie", "Steve", {score1:1, score2:1}]
-    ];
-
-    // Round of 16 results
-    const round16Results = [
-      ["Mwai", "Dukeh", {score1:5, score2:1}],
-      ["Mwai", "Dukeh", {score1:4, score2:3}],
-      ["Lanther", "Mufasa2fly", {score1:3, score2:2}],
-      ["Lanther", "Mufasa2fly", {score1:3, score2:2}],
-      ["Braizen", "Magggs", {score1:5, score2:4}],
-      ["Braizen", "Magggs", {score1:4, score2:1}],
-      ["Turna", "Atraz", {score1:3, score2:2}],
-      ["Turna", "Atraz", {score1:2, score2:4}],
-      ["Boogie", "Trumperbee", {score1:0, score2:1}],
-      ["Boogie", "Trumperbee", {score1:0, score2:0}],
-      ["Fella", "Itsotieno020", {score1:3, score2:2}],
-      ["Fella", "Itsotieno020", {score1:5, score2:0}],
-      ["Agrey", "Kenton", {score1:1, score2:0}],
-      ["Agrey", "Kenton", {score1:0, score2:0}],
-      ["Faisal", "Crmax70", {score1:1, score2:0}],
-      ["Faisal", "Crmax70", {score1:1, score2:0}]
-    ];
-
-    // All completed matches (playoffs + round of 16)
-    const allCompletedMatches = [...playoffResults, ...round16Results];
-
-    // Initialize standings  
-    let standings = {};  
-    let sortedStandings = [];  
-
-    // Function to completely rebuild standings from all matches  
-    function rebuildStandings() {  
-      // Reset all standings  
-      standings = {};  
-      Object.keys(players).forEach(player => {  
-        standings[player] = {  
-          team: player,  
-          pld: 0, w: 0, d: 0, l: 0,  
-          gf: 0, ga: 0, gd: 0, pts: 0  
-        };  
-      });  
-
-      // Process all completed matches  
-      allCompletedMatches.forEach(match => {  
-        const [team1, team2, result] = match;  
-          
-        if (result && typeof result.score1 === 'number' && typeof result.score2 === 'number') {  
-          // Update team1 stats  
-          standings[team1].pld++;  
-          standings[team1].gf += result.score1;  
-          standings[team1].ga += result.score2;  
-          standings[team1].gd = standings[team1].gf - standings[team1].ga;  
-            
-          // Update team2 stats  
-          standings[team2].pld++;  
-          standings[team2].gf += result.score2;  
-          standings[team2].ga += result.score1;  
-          standings[team2].gd = standings[team2].gf - standings[team2].ga;  
-            
-          // Update points  
-          if (result.score1 > result.score2) {  
-            standings[team1].w++;  
-            standings[team1].pts += 3;  
-            standings[team2].l++;  
-          } else if (result.score1 < result.score2) {  
-            standings[team2].w++;  
-            standings[team2].pts += 3;  
-            standings[team1].l++;  
-          } else {  
-            standings[team1].d++;  
-            standings[team2].d++;  
-            standings[team1].pts += 1;  
-            standings[team2].pts += 1;  
-          }  
-        }  
-      });  
-
-      // Sort standings  
-      sortedStandings = Object.values(standings).sort((a, b) => {  
-        if (b.pts !== a.pts) return b.pts - a.pts;  
-        if (b.gd !== a.gd) return b.gd - a.gd;  
-        if (b.gf !== a.gf) return b.gf - a.gf;  
-        return a.team.localeCompare(b.team);  
-      });  
-    }  
-
-    // Function to render playoff results
-    function renderPlayoffResults() {
-      const playoffGrid = document.getElementById('playoff-fixtures');
-      if (!playoffGrid) return;
-      
-      playoffGrid.innerHTML = '';
-      
-      // Group results by matchup
-      const matchups = {};
-      playoffResults.forEach(match => {
-        const [team1, team2] = match;
-        const key = `${team1}-${team2}`;
-        if (!matchups[key]) {
-          matchups[key] = [];
-        }
-        matchups[key].push(match);
-      });
-      
-      // Render each matchup
-      Object.values(matchups).forEach(matches => {
-        const [team1, team2] = matches[0];
-        
-        // Create container for this matchup
-        const matchupContainer = document.createElement('div');
-        matchupContainer.style.gridColumn = '1 / span 3';
-        matchupContainer.style.marginBottom = '1rem';
-        
-        // Add matchup title
-        const title = document.createElement('div');
-        title.textContent = `${team1} vs ${team2}`;
-        title.style.textAlign = 'center';
-        title.style.fontWeight = 'bold';
-        title.style.marginBottom = '0.5rem';
-        matchupContainer.appendChild(title);
-        
-        // Add results grid
-        const resultsGrid = document.createElement('div');
-        resultsGrid.style.display = 'grid';
-        resultsGrid.style.gridTemplateColumns = '1fr 0.3fr 1fr';
-        resultsGrid.style.gap = '0.8rem';
-        
-        // Add each leg result
-        matches.forEach(match => {
-          const [t1, t2, result] = match;
-          
-          const team1Link = document.createElement('a');
-          team1Link.className = 'player-link';
-          team1Link.textContent = t1;
-          team1Link.href = `https://wa.me/${players[t1]}`;
-          team1Link.target = "_blank";
-          
-          const team2Link = document.createElement('a');
-          team2Link.className = 'player-link';
-          team2Link.textContent = t2;
-          team2Link.href = `https://wa.me/${players[t2]}`;
-          team2Link.target = "_blank";
-          
-          const resultDisplay = document.createElement('div');
-          resultDisplay.className = 'match-result';
-          resultDisplay.textContent = `${result.score1}-${result.score2}`;
-          
-          resultsGrid.appendChild(team1Link);
-          resultsGrid.appendChild(resultDisplay);
-          resultsGrid.appendChild(team2Link);
-        });
-        
-        // Calculate and display aggregate
-        const aggregate = document.createElement('div');
-        aggregate.style.gridColumn = '1 / span 3';
-        aggregate.style.textAlign = 'center';
-        aggregate.style.marginTop = '0.5rem';
-        
-        const total1 = matches.reduce((sum, match) => sum + match[2].score1, 0);
-        const total2 = matches.reduce((sum, match) => sum + match[2].score2, 0);
-        
-        let winner;
-        if (total1 > total2) {
-          winner = team1;
-        } else if (total2 > total1) {
-          winner = team2;
-        } else {
-          // Handle away goals or other tiebreakers if needed
-          winner = "Match tied (check rules)";
-        }
-        
-        aggregate.textContent = `Aggregate: ${total1}-${total2} (${winner} advances)`;
-        aggregate.style.fontWeight = 'bold';
-        aggregate.style.color = '#facc15';
-        
-        resultsGrid.appendChild(aggregate);
-        matchupContainer.appendChild(resultsGrid);
-        playoffGrid.appendChild(matchupContainer);
-      });
-    }
-
-    // Function to render Round of 16 results
-    function renderRound16Results() {
-      const resultsGrid = document.getElementById('round16-results');
-      if (!resultsGrid) return;
-      
-      resultsGrid.innerHTML = '';
-      
-      // Group results by matchup
-      const matchups = {};
-      round16Results.forEach(match => {
-        const [team1, team2] = match;
-        const key = `${team1}-${team2}`;
-        if (!matchups[key]) {
-          matchups[key] = [];
-        }
-        matchups[key].push(match);
-      });
-      
-      // Render each matchup
-      Object.values(matchups).forEach(matches => {
-        const [team1, team2] = matches[0];
-        
-        // Create container for this matchup
-        const matchupContainer = document.createElement('div');
-        matchupContainer.style.gridColumn = '1 / span 3';
-        matchupContainer.style.marginBottom = '1rem';
-        
-        // Add matchup title
-        const title = document.createElement('div');
-        title.textContent = `${team1} vs ${team2}`;
-        title.style.textAlign = 'center';
-        title.style.fontWeight = 'bold';
-        title.style.marginBottom = '0.5rem';
-        matchupContainer.appendChild(title);
-        
-        // Add results grid
-        const resultsGrid = document.createElement('div');
-        resultsGrid.style.display = 'grid';
-        resultsGrid.style.gridTemplateColumns = '1fr 0.3fr 1fr';
-        resultsGrid.style.gap = '0.8rem';
-        
-        // Add each leg result
-        matches.forEach(match => {
-          const [t1, t2, result] = match;
-          
-          const team1Link = document.createElement('a');
-          team1Link.className = 'player-link';
-          team1Link.textContent = t1;
-          team1Link.href = `https://wa.me/${players[t1]}`;
-          team1Link.target = "_blank";
-          
-          const team2Link = document.createElement('a');
-          team2Link.className = 'player-link';
-          team2Link.textContent = t2;
-          team2Link.href = `https://wa.me/${players[t2]}`;
-          team2Link.target = "_blank";
-          
-          const resultDisplay = document.createElement('div');
-          resultDisplay.className = 'match-result';
-          resultDisplay.textContent = `${result.score1}-${result.score2}`;
-          
-          resultsGrid.appendChild(team1Link);
-          resultsGrid.appendChild(resultDisplay);
-          resultsGrid.appendChild(team2Link);
-        });
-        
-        // Calculate and display aggregate
-        const aggregate = document.createElement('div');
-        aggregate.style.gridColumn = '1 / span 3';
-        aggregate.style.textAlign = 'center';
-        aggregate.style.marginTop = '0.5rem';
-        
-        const total1 = matches.reduce((sum, match) => sum + match[2].score1, 0);
-        const total2 = matches.reduce((sum, match) => sum + match[2].score2, 0);
-        
-        let winner;
-        if (total1 > total2) {
-          winner = team1;
-        } else if (total2 > total1) {
-          winner = team2;
-        } else {
-          // Handle away goals or other tiebreakers if needed
-          winner = "Match tied (check rules)";
-        }
-        
-        aggregate.textContent = `Aggregate: ${total1}-${total2} (${winner} advances)`;
-        aggregate.style.fontWeight = 'bold';
-        aggregate.style.color = '#facc15';
-        
-        resultsGrid.appendChild(aggregate);
-        matchupContainer.appendChild(resultsGrid);
-        resultsGrid.appendChild(matchupContainer);
-      });
-    }
-
-    // Function to render standings table  
-    function renderStandings() {  
-      const standingsBody = document.getElementById('standings-body');  
-      if (!standingsBody) return;  
-        
-      standingsBody.innerHTML = '';  
-        
-      sortedStandings.forEach((team, index) => {  
-        const row = document.createElement('tr');  
-          
-        // Apply qualification classes  
-        if (index < 8) {  
-          row.className = 'direct-qualifier';  
-        } else if (index < 24) {  
-          row.className = 'playoff-qualifier';  
-        } else {  
-          row.className = 'eliminated';  
-        }  
-          
-        row.innerHTML = `  
-          <td>${index + 1}</td>  
-          <td><a href="https://wa.me/${players[team.team]}" target="_blank" class="team-link">${team.team}</a></td>  
-          <td>${team.pld}</td>  
-          <td>${team.w}</td>  
-          <td>${team.d}</td>  
-          <td>${team.l}</td>  
-          <td>${team.gf}</td>  
-          <td>${team.ga}</td>  
-          <td>${team.gd}</td>  
-          <td>${team.pts}</td>  
-        `;  
-        standingsBody.appendChild(row);  
-      });  
-    }  
-
-    // Function to render eliminated teams  
-    function renderEliminatedTeams() {  
-      const eliminatedContainer = document.getElementById('eliminated-teams');  
-      if (!eliminatedContainer) return;  
-        
-      eliminatedContainer.innerHTML = '';  
-        
-      // Get all teams that didn't make it to quarter-finals
-      const quarterFinalists = ["Atraz", "Trumperbee", "Mwai", "Braizen", "Itsotieno020", "Agrey", "Lanther", "Faisal"];
-      const eliminated = sortedStandings.filter(team => !quarterFinalists.includes(team.team));
-      
-      eliminated.forEach(team => {
-        const teamElement = document.createElement('div');
-        teamElement.className = 'eliminated-team';
-        teamElement.textContent = team.team;
-        eliminatedContainer.appendChild(teamElement);
-      });
-    }  
-
-    // Function to show surprise elements tomorrow
-    function setupSurprise() {
-      const today = new Date();
-      const tomorrow = new Date(today);
-      tomorrow.setDate(today.getDate() + 1);
-      
-      // Check if it's tomorrow or later
-      if (today >= tomorrow) {
-        document.getElementById('surpriseBanner').style.display = 'block';
-        document.getElementById('shockText').style.display = 'block';
+  <script>
+    // Team data with match history
+    const teams = {
+      "Atraz": {
+        status: "active",
+        matches: [
+          { stage: "Group D", opponent: "Turna", result: "L", score: "1-2" },
+          { stage: "Group D", opponent: "Blitzfury", result: "W", score: "3-1" },
+          { stage: "Group D", opponent: "Ziggy", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Turna", result: "W", score: "6-5 (agg)" },
+          { stage: "Quarter-final", opponent: "Trumperbee", result: "W", score: "5-3 (agg)" }
+        ],
+        phone: "+254740412543"
+      },
+      "Itsotieno": {
+        status: "active",
+        matches: [
+          { stage: "Group F", opponent: "Fella", result: "L", score: "0-3" },
+          { stage: "Group F", opponent: "Immortaljester", result: "W", score: "2-1" },
+          { stage: "Group F", opponent: "Drunken Master", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Fella", result: "L", score: "2-8 (agg)" }
+        ],
+        phone: "+254742245445"
+      },
+      "Braizen": {
+        status: "active",
+        matches: [
+          { stage: "Group C", opponent: "Magggs", result: "W", score: "3-2" },
+          { stage: "Group C", opponent: "Homeywonder", result: "W", score: "2-0" },
+          { stage: "Group C", opponent: "Griffo", result: "W", score: "5-1" },
+          { stage: "Round of 16", opponent: "Magggs", result: "W", score: "9-5 (agg)" },
+          { stage: "Quarter-final", opponent: "Mwai", result: "W", score: "5-1 (agg)" }
+        ],
+        phone: "+254725912919"
+      },
+      "Faisal": {
+        status: "active",
+        matches: [
+          { stage: "Group H", opponent: "Crmax70", result: "W", score: "2-1" },
+          { stage: "Group H", opponent: "Felixmorara", result: "W", score: "3-0" },
+          { stage: "Group H", opponent: "Gitran", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Crmax70", result: "W", score: "2-0 (agg)" },
+          { stage: "Quarter-final", opponent: "Lanther", result: "W", score: "2-2 (a) (agg)" }
+        ],
+        phone: "+254738333443"
+      },
+      // Add all 32 teams with their match history
+      "Trumperbee": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group E", opponent: "Boogie", result: "L", score: "1-2" },
+          { stage: "Group E", opponent: "Stafyodi", result: "W", score: "3-1" },
+          { stage: "Group E", opponent: "AYUMAH", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Boogie", result: "W", score: "1-0 (agg)" },
+          { stage: "Quarter-final", opponent: "Atraz", result: "L", score: "3-5 (agg)" }
+        ],
+        phone: "+254790231190"
+      },
+      "Mwai": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group A", opponent: "Dukeh", result: "W", score: "2-1" },
+          { stage: "Group A", opponent: "Young_furry", result: "W", score: "3-0" },
+          { stage: "Group A", opponent: "Storm", result: "W", score: "4-1" },
+          { stage: "Round of 16", opponent: "Dukeh", result: "W", score: "9-4 (agg)" },
+          { stage: "Quarter-final", opponent: "Braizen", result: "L", score: "1-5 (agg)" }
+        ],
+        phone: "+254794707385"
+      },
+      "Agrey": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group G", opponent: "Kenton", result: "W", score: "2-1" },
+          { stage: "Group G", opponent: "Yotti", result: "W", score: "3-0" },
+          { stage: "Group G", opponent: "Steve", result: "W", score: "4-1" },
+          { stage: "Round of 16", opponent: "Kenton", result: "W", score: "1-0 (agg)" },
+          { stage: "Quarter-final", opponent: "Itsotieno", result: "L", score: "1-5 (agg)" }
+        ],
+        phone: "+254719455239"
+      },
+      "Lanther": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group B", opponent: "Mufasa2fly", result: "W", score: "3-2" },
+          { stage: "Group B", opponent: "Raydelo", result: "W", score: "2-0" },
+          { stage: "Group B", opponent: "Aniro", result: "W", score: "4-1" },
+          { stage: "Round of 16", opponent: "Mufasa2fly", result: "W", score: "6-4 (agg)" },
+          { stage: "Quarter-final", opponent: "Faisal", result: "L", score: "2-2 (a) (agg)" }
+        ],
+        phone: "+254718167359"
+      },
+      // Add remaining teams...
+      "Dukeh": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group A", opponent: "Mwai", result: "L", score: "1-2" },
+          { stage: "Group A", opponent: "Young_furry", result: "W", score: "3-1" },
+          { stage: "Group A", opponent: "Storm", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Mwai", result: "L", score: "4-9 (agg)" }
+        ],
+        phone: "+254710838132"
+      },
+      "Mufasa2fly": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group B", opponent: "Lanther", result: "L", score: "2-3" },
+          { stage: "Group B", opponent: "Raydelo", result: "W", score: "2-1" },
+          { stage: "Group B", opponent: "Aniro", result: "W", score: "3-0" },
+          { stage: "Round of 16", opponent: "Lanther", result: "L", score: "4-6 (agg)" }
+        ],
+        phone: "+254736567664"
+      },
+      "Magggs": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group C", opponent: "Braizen", result: "L", score: "2-3" },
+          { stage: "Group C", opponent: "Homeywonder", result: "W", score: "2-1" },
+          { stage: "Group C", opponent: "Griffo", result: "W", score: "3-0" },
+          { stage: "Round of 16", opponent: "Braizen", result: "L", score: "5-9 (agg)" }
+        ],
+        phone: "+254115922639"
+      },
+      "Turna": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group D", opponent: "Atraz", result: "W", score: "2-1" },
+          { stage: "Group D", opponent: "Blitzfury", result: "W", score: "3-1" },
+          { stage: "Group D", opponent: "Ziggy", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Atraz", result: "L", score: "5-6 (agg)" }
+        ],
+        phone: "+254748632463"
+      },
+      "Boogie": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group E", opponent: "Trumperbee", result: "W", score: "2-1" },
+          { stage: "Group E", opponent: "Stafyodi", result: "W", score: "3-1" },
+          { stage: "Group E", opponent: "AYUMAH", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Trumperbee", result: "L", score: "0-1 (agg)" }
+        ],
+        phone: "+254742458718"
+      },
+      "Fella": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group F", opponent: "Itsotieno", result: "W", score: "3-0" },
+          { stage: "Group F", opponent: "Immortaljester", result: "W", score: "2-1" },
+          { stage: "Group F", opponent: "Drunken Master", result: "W", score: "4-0" },
+          { stage: "Round of 16", opponent: "Itsotieno", result: "W", score: "8-2 (agg)" },
+          { stage: "Quarter-final", opponent: "Agrey", result: "L", score: "1-5 (agg)" }
+        ],
+        phone: "+254715281820"
+      },
+      "Kenton": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group G", opponent: "Agrey", result: "L", score: "1-2" },
+          { stage: "Group G", opponent: "Yotti", result: "W", score: "2-1" },
+          { stage: "Group G", opponent: "Steve", result: "W", score: "3-0" },
+          { stage: "Round of 16", opponent: "Agrey", result: "L", score: "0-1 (agg)" }
+        ],
+        phone: "+254704152817"
+      },
+      "Crmax70": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group H", opponent: "Faisal", result: "L", score: "1-2" },
+          { stage: "Group H", opponent: "Felixmorara", result: "W", score: "2-1" },
+          { stage: "Group H", opponent: "Gitran", result: "W", score: "3-0" },
+          { stage: "Round of 16", opponent: "Faisal", result: "L", score: "0-2 (agg)" }
+        ],
+        phone: "+254716027382"
+      },
+      // Add the rest of the group stage teams
+      "Young_furry": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group A", opponent: "Mwai", result: "L", score: "0-3" },
+          { stage: "Group A", opponent: "Dukeh", result: "L", score: "1-3" },
+          { stage: "Group A", opponent: "Storm", result: "W", score: "2-1" }
+        ],
+        phone: "+254112449057"
+      },
+      "Storm": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group A", opponent: "Mwai", result: "L", score: "1-4" },
+          { stage: "Group A", opponent: "Dukeh", result: "L", score: "0-4" },
+          { stage: "Group A", opponent: "Young_furry", result: "L", score: "1-2" }
+        ],
+        phone: "+254755733718"
+      },
+      "Raydelo": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group B", opponent: "Lanther", result: "L", score: "0-2" },
+          { stage: "Group B", opponent: "Mufasa2fly", result: "L", score: "1-2" },
+          { stage: "Group B", opponent: "Aniro", result: "W", score: "2-1" }
+        ],
+        phone: "+254114118860"
+      },
+      "Aniro": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group B", opponent: "Lanther", result: "L", score: "1-4" },
+          { stage: "Group B", opponent: "Mufasa2fly", result: "L", score: "0-3" },
+          { stage: "Group B", opponent: "Raydelo", result: "L", score: "1-2" }
+        ],
+        phone: "+254719455239"
+      },
+      "Homeywonder": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group C", opponent: "Braizen", result: "L", score: "0-2" },
+          { stage: "Group C", opponent: "Magggs", result: "L", score: "1-2" },
+          { stage: "Group C", opponent: "Griffo", result: "W", score: "2-1" }
+        ],
+        phone: "+254743960664"
+      },
+      "Griffo": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group C", opponent: "Braizen", result: "L", score: "1-5" },
+          { stage: "Group C", opponent: "Magggs", result: "L", score: "0-3" },
+          { stage: "Group C", opponent: "Homeywonder", result: "L", score: "1-2" }
+        ],
+        phone: "+254745147572"
+      },
+      "Blitzfury": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group D", opponent: "Atraz", result: "L", score: "1-3" },
+          { stage: "Group D", opponent: "Turna", result: "L", score: "1-3" },
+          { stage: "Group D", opponent: "Ziggy", result: "W", score: "2-1" }
+        ],
+        phone: "+254729861714"
+      },
+      "Ziggy": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group D", opponent: "Atraz", result: "L", score: "0-4" },
+          { stage: "Group D", opponent: "Turna", result: "L", score: "0-4" },
+          { stage: "Group D", opponent: "Blitzfury", result: "L", score: "1-2" }
+        ],
+        phone: "+254113359005"
+      },
+      "Stafyodi": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group E", opponent: "Boogie", result: "L", score: "1-3" },
+          { stage: "Group E", opponent: "Trumperbee", result: "L", score: "1-3" },
+          { stage: "Group E", opponent: "AYUMAH", result: "W", score: "2-1" }
+        ],
+        phone: "+254115635847"
+      },
+      "AYUMAH": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group E", opponent: "Boogie", result: "L", score: "0-4" },
+          { stage: "Group E", opponent: "Trumperbee", result: "L", score: "0-4" },
+          { stage: "Group E", opponent: "Stafyodi", result: "L", score: "1-2" }
+        ],
+        phone: "+254768496839"
+      },
+      "Immortaljester": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group F", opponent: "Fella", result: "L", score: "1-2" },
+          { stage: "Group F", opponent: "Itsotieno", result: "L", score: "1-2" },
+          { stage: "Group F", opponent: "Drunken Master", result: "W", score: "2-1" }
+        ],
+        phone: "+254743484006"
+      },
+      "Drunken Master": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group F", opponent: "Fella", result: "L", score: "0-4" },
+          { stage: "Group F", opponent: "Itsotieno", result: "L", score: "0-4" },
+          { stage: "Group F", opponent: "Immortaljester", result: "L", score: "1-2" }
+        ],
+        phone: "+254792406027"
+      },
+      "Yotti": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group G", opponent: "Agrey", result: "L", score: "0-3" },
+          { stage: "Group G", opponent: "Kenton", result: "L", score: "1-2" },
+          { stage: "Group G", opponent: "Steve", result: "W", score: "2-1" }
+        ],
+        phone: "+254701289677"
+      },
+      "Steve": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group G", opponent: "Agrey", result: "L", score: "1-4" },
+          { stage: "Group G", opponent: "Kenton", result: "L", score: "0-3" },
+          { stage: "Group G", opponent: "Yotti", result: "L", score: "1-2" }
+        ],
+        phone: "+254701504755"
+      },
+      "Felixmorara": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group H", opponent: "Faisal", result: "L", score: "0-3" },
+          { stage: "Group H", opponent: "Crmax70", result: "L", score: "1-2" },
+          { stage: "Group H", opponent: "Gitran", result: "W", score: "2-1" }
+        ],
+        phone: "+254715281820"
+      },
+      "Gitran": {
+        status: "eliminated",
+        matches: [
+          { stage: "Group H", opponent: "Faisal", result: "L", score: "0-4" },
+          { stage: "Group H", opponent: "Crmax70", result: "L", score: "0-3" },
+          { stage: "Group H", opponent: "Felixmorara", result: "L", score: "1-2" }
+        ],
+        phone: "+254794209536"
       }
-    }
+    };
 
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-      rebuildStandings();
-      renderStandings();
-      renderPlayoffResults();
-      renderRound16Results();
-      renderEliminatedTeams();
-      setupSurprise();
+    // Populate team list
+    const teamListElement = document.getElementById('team-list');
+    Object.keys(teams).sort().forEach(team => {
+      const teamElement = document.createElement('div');
+      teamElement.className = `team-form-item p-2 rounded flex justify-between items-center ${teams[team].status === 'active' ? 'still-in' : 'eliminated'}`;
+      teamElement.innerHTML = `
+        <span>${team}</span>
+        <span class="text-xs ${teams[team].status === 'active' ? 'text-green-400' : 'text-red-400'}">
+          ${teams[team].status === 'active' ? 'Still competing' : 'Eliminated'}
+        </span>
+      `;
+      teamElement.addEventListener('click', () => showTeamDetails(team));
+      teamListElement.appendChild(teamElement);
     });
-  </script>  
-</body>  
+
+    // Show team details
+    function showTeamDetails(teamName) {
+      const team = teams[teamName];
+      const teamDetailsElement = document.getElementById('team-details');
+      
+      let matchesHTML = '';
+      team.matches.forEach(match => {
+        matchesHTML += `
+          <tr>
+            <td>${match.stage}</td>
+            <td>${match.opponent}</td>
+            <td class="${match.result === 'W' ? 'text-green-400 font-bold' : 'text-red-400'}">${match.result}</td>
+            <td>${match.score}</td>
+          </tr>
+        `;
+      });
+      
+      teamDetailsElement.innerHTML = `
+        <div class="mb-6">
+          <h3 class="text-2xl font-bold mb-2">${teamName}</h3>
+          <div class="flex items-center mb-4">
+            <span class="px-3 py-1 rounded-full ${team.status === 'active' ? 'bg-green-900 text-green-300' : 'bg-red-900 text-red-300'} text-sm font-semibold">
+              ${team.status === 'active' ? 'Still in competition' : 'Eliminated'}
+            </span>
+            <a href="tel:${team.phone}" class="ml-4 px-3 py-1 bg-blue-700 hover:bg-blue-600 rounded-full text-sm font-semibold transition">
+              <i class="fas fa-phone mr-1"></i> Contact
+            </a>
+          </div>
+        </div>
+        
+        <h4 class="text-lg font-semibold mb-3 border-b border-gray-700 pb-2">Match History</h4>
+        <div class="overflow-x-auto">
+          <table class="match-result-table">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Opponent</th>
+                <th>Result</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${matchesHTML}
+            </tbody>
+          </table>
+        </div>
+        
+        ${team.status === 'active' ? `
+        <div class="mt-6 bg-blue-900 bg-opacity-50 rounded-lg p-4">
+          <h4 class="text-lg font-semibold mb-2">Next Match</h4>
+          <p>${getNextMatch(teamName)}</p>
+        </div>
+        ` : ''}
+      `;
+      
+      // Highlight selected team in the list
+      document.querySelectorAll('.team-form-item').forEach(item => {
+        item.classList.remove('active-team');
+        if (item.textContent.includes(teamName)) {
+          item.classList.add('active-team');
+        }
+      });
+    }
+
+    // Simple function to determine next match (for demo purposes)
+    function getNextMatch(teamName) {
+      const semiFinals = [
+        "Atraz vs Itsotieno",
+        "Braizen vs Faisal"
+      ];
+      
+      for (const match of semiFinals) {
+        if (match.includes(teamName)) {
+          return `Semi-final: ${match}`;
+        }
+      }
+      
+      return "No upcoming matches";
+    }
+
+    // Modal functionality
+    const modal = document.getElementById("teamModal");
+    const span = document.getElementsByClassName("close-modal")[0];
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Initialize with first team selected
+    showTeamDetails("Atraz");
+  </script>
+</body>
 </html>
